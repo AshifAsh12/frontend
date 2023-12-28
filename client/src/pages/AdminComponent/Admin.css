@@ -1,0 +1,485 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+
+.wrapper2 {
+  height: 100vh;
+  width: 100%;
+  background: #FFFF;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  display: flex;
+
+}
+
+
+
+.nav {
+  width: 200px;
+  height: 100vh;
+  background: #FFFF;
+
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+
+
+
+
+}
+
+.navbutton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+
+}
+
+.navlink {
+  height: 40px;
+  width: 150px;
+  color: black;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: none;
+  font-family: 'Bahnschrift Condensed';
+  background: white;
+
+
+
+
+}
+
+
+.navheading {
+  font-size: 16px;
+  border-bottom: 2px solid #7BC4B2;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 150px;
+  width: 300px;
+  text-transform: capitalize;
+  font-weight: 900;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.menu {
+  flex: 0 0 200px;
+  color: white;
+  position: fixed;
+
+
+}
+
+.outlet-box {
+  background: #EEF0F2;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  flex: 1;
+  left: 20%;
+
+  overflow-y: scroll;
+
+}
+
+
+.search-container {
+  position: absolute;
+  top: 9%;
+  left: 55%;
+  display: flex;
+
+}
+
+.student-card {
+  padding: 15px;
+  margin: 5px;
+  background-color: white;
+  color: black;
+  width: 440px;
+  border-radius: 5px;
+  box-shadow: 20px 20px 60px #00000041,
+    inset -20px 60px #ffffff40;
+
+
+}
+
+.Add-box {
+  margin: 60px;
+  width: 700px;
+  height: 500px;
+  background: #FFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+
+}
+
+.Add-box input {
+  padding: 10px;
+  margin: 6px;
+  width: 500px;
+  height: 30px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.5px solid black;
+  outline: none;
+  font-size: 1em;
+  padding: 0 35px 0 5px;
+
+
+}
+
+.Add-box h3 {
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  letter-spacing: 3px;
+
+}
+
+.Add-box button {
+  width: 120px;
+}
+
+.Addbutton-box {
+  position: relative;
+  left: 75%;
+}
+
+.record {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  width: 250px;
+  height: 50px;
+
+  font-weight: 700;
+  background: #7BC4B2;
+  color: aliceblue;
+
+}
+
+.body {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  width: 250px;
+  height: 50px;
+
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+}
+
+.edit-button {
+  text-decoration: none;
+  background: #7b7cc4;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  color: white;
+  vertical-align: center;
+
+}
+
+.delete-button {
+  width: 100px;
+  height: 40px;
+
+  border-radius: 40px;
+  color: white;
+  vertical-align: center;
+  background-color: red;
+  border: none;
+}
+
+.detailbutton {
+  margin: 10px;
+  ;
+  color: #7BC4B2;
+
+  text-align: center;
+  background: white;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+.Dash-heading {
+  background: #7BC4B2;
+  height: 130px;
+  width: 100%;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+.Detail-box {
+  display: grid;
+  grid-template-columns: repeat(2, 0fr);
+  margin-left: 30px;
+  gap: 20px;
+
+
+
+
+
+}
+
+.DashHeadname {
+  font-size: 20px;
+  padding: 5px;
+  letter-spacing: 2px;
+}
+
+.Dashname {
+  text-transform: capitalize;
+  padding: 5px;
+  letter-spacing: 2px;
+}
+
+.homeContainer {
+
+  display: grid;
+  grid-template-columns: repeat(2, 0fr);
+  gap: 10px;
+
+}
+
+.TeacherhomeContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 0fr);
+  
+  gap: 0px;
+}
+
+
+
+.Null-details {
+  position: fixed;
+  left: 45%;
+  font-weight: 600;
+
+
+}
+
+.total {
+  background: #ffff;
+
+  margin: 20px;
+  width: 300px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  border-radius: 5px;
+}
+
+.totalstudent {
+  background: #FFFF;
+  margin: 20px;
+  width: 600px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+}
+
+.Number {
+  font-size: 28px;
+  font-weight: 1000;
+}
+
+.Select-box {
+  margin-top: 15px;
+  padding: 5px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.Select-box select {
+  width: 400px;
+  height: 30px;
+  text-align: center;
+  outline: none;
+
+  font-size: 16px;
+  font-weight: 100;
+
+
+}
+
+.Select-box option {
+  height: 20px;
+}
+
+.ModelBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow:
+    1px 1px 0 0 #7BC4B2,
+    0 1px 1px 1px #7BC4B2,
+    -1px 0 0 0 #7BC4B2,
+    0 -1px 0 0 #7BC4B2;
+  width: 270px;
+  height: 150px;
+  position: absolute;
+  left: 40%;
+
+}
+
+.ModelBox p {
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  ;
+}
+
+.Model-Button {
+  width: 60px;
+  height: 30px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+@media (max-width: 767px) {
+  .wrapper2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+
+
+
+  .nav {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .navbutton {
+    margin: 10px;
+  }
+
+
+
+
+
+  .menu {
+    width: 150px;
+    z-index: 1;
+    position: fixed;
+    left: 0%;
+
+
+  }
+
+  .outlet-box {
+    width: 100%;
+    left: 0;
+  }
+
+  .Add-box {
+    width: 90%;
+    left: 5%;
+  }
+
+  .Add-box input {
+    width: 100%;
+  }
+
+  .Addbutton-box {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .Detail-box {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .homeContainer {
+
+    grid-template-columns: 1fr;
+    gap: 10px;
+    left: 0;
+
+  }
+
+  .TeacherhomeContainer {
+
+    grid-template-columns: 1fr;
+    /* Use 1fr instead of 0fr */
+    gap: 10px;
+    left: 0;
+  }
+
+  .totalstudent {
+
+    width: 450px;
+
+  }
+
+
+}
+
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

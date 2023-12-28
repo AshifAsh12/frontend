@@ -1,0 +1,155 @@
+
+.Attendance-dash{
+    
+    background:#7BC4B2;
+    height:130px;
+    width:100%;
+    color:white;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+
+    
+    
+}
+.Attendance-Detail-Table{
+    position: absolute;
+    left:8%;
+    top:30%;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    background: #ffff;
+    width:800px;
+    padding: 10px;
+    overflow-y: scroll;
+
+}
+.datecontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top:10%;
+    left:40%;
+    
+}
+.datecontainer label{
+    font-weight: 700;
+}
+.datecontainer input{
+    width:150px;
+    height:30px;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    outline: none;
+    
+}
+.datecontainer button{
+    background: rgb(248, 246, 249);
+    color:black;
+    height:30px;
+    border: none;
+    width:40px;
+}
+
+.Attendance-box{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:300px;
+    width:400px;
+    font-weight: 800;
+    padding: 20px;
+    position:absolute;
+    top:30%;
+    left:20%
+}
+.Attendance-name{
+    text-align: center;
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    
+}
+.Attendance-name p{
+    padding: 5px;
+}
+.Attendance-button{
+    display: flex;
+    gap:10px;
+}
+.Attendance-detail-name{
+    font-weight: 300;
+    margin: 5px;
+    letter-spacing: 2px;
+    
+}
+
+.Present-button{
+    
+    width:100px;
+    height:30px;
+    background: blueviolet;
+    color:white;
+    border: none;
+    font-weight: 600;
+}
+.Absent-button{
+    width:100px;
+    height:30px;
+    background: red;
+    color:white;
+    border: none;
+    font-weight: 600;
+}
+.Absent-button:hover ,.Present-button:hover{
+    transform: scale(0.9);
+
+}
+.Attendance-Table{
+    position: absolute;
+    left:8%;
+    top:30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffff;
+    width:800px;
+    
+
+}
+.Attendance-Table p{
+    padding:10px;
+    margin:10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.Attendance-Table table{
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    text-transform: capitalize;
+   
+    
+}
+table thead th{
+    background: #7BC4B2;
+    color: white;
+    width:180px;
+    height:50px;
+    
+}
+table tbody td{
+    text-align: center;
+    height: 50px;
+}
+.Absent-status {
+    color: red;
+  }

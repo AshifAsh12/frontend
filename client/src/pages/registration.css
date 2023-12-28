@@ -1,0 +1,35 @@
+
+  .error{
+    color:red;
+    font-size: 10px;
+    display: flex;
+    justify-content: left;
+   
+  }
+  .lerror{
+    color:red;
+    font-size:10px;
+  }
+  
+  
+  
+  .link{
+    font-size: 12px;
+  }
+
+  .output{
+    width:800px;
+    position: fixed;
+    left:10%;
+    
+  }
+
+
+
+
+
+
+
+
+
+

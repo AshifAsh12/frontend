@@ -17,7 +17,7 @@ function AdminHomeNav() {
   Axios.defaults.withCredentials=true
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/userdata/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/userdata/${IId}`)
       .then((result) => {
         setData(result.data[0]);
       })
@@ -37,7 +37,7 @@ function AdminHomeNav() {
 
   const handleLogout = () => {
 
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/logout`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/logout`)
       .then((result) => {
         if(result.data.status){
           localStorage.removeItem("valid")

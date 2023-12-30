@@ -34,7 +34,7 @@ function TeacherDetail() {
   };
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/teacherdetail/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/teacherdetail/${IId}`)
       .then(result => {
         setData(result.data);
         if (result.data.length === 0) {
@@ -67,10 +67,10 @@ function TeacherDetail() {
     openModal(
       <div>
         <p>Are you sure you want to delete {teacher.Name}?</p>
-        <button className="Model-Button" onClick={handleDeleteYes}>
+        <button className="Model-Buttonyes" onClick={handleDeleteYes}>
           Yes
         </button>
-        <button className="Model-Button" onClick={handleDeleteNo}>
+        <button className="Model-ButtonNo" onClick={handleDeleteNo}>
           No
         </button>
       </div>
@@ -80,7 +80,7 @@ function TeacherDetail() {
   const handleDeleteYes = () => {
     closeModal();
     if (selectedTeacher) {
-      Axios.post(`https://backend-kappa-gray.vercel.app/api/deleteteacher/${IId}`, {
+      Axios.post(`https://backend-sandy-six.vercel.app/api/deleteteacher/${IId}`, {
         TeacherID: selectedTeacher.TeacherID,
       })
         .then((response) => {

@@ -87,7 +87,7 @@ function InstituteRegistration() {
 
 if (step === 1) {
   console.log(formData.instituteid)
-  Axios.get(`https://backend-kappa-gray.vercel.app/api/checkInstitute?Iid=${formData.instituteid}`)
+  Axios.get(`https://backend-sandy-six.vercel.app/api/checkInstitute?Iid=${formData.instituteid}`)
   .then(result => {
     console.log(result.data.data)
     if(result.data.data.length>0){
@@ -107,7 +107,7 @@ if (step === 1) {
 } else 
 if (step === 2) {
   console.log(formData.instituteid)
-  Axios.get(`https://backend-kappa-gray.vercel.app/api/checkphonenumber?number=${formData.number}&email=${formData.email}`)
+  Axios.get(`https://backend-sandy-six.vercel.app/api/checkphonenumber?number=${formData.number}&email=${formData.email}`)
   .then(result => {
     console.log(result.data.data);
     if(result.data.data.length > 0){
@@ -126,7 +126,7 @@ if (step === 2) {
   
 } else 
 if (step === 3) {
-  Axios.post(`https://backend-kappa-gray.vercel.app/api/registration/`, {
+  Axios.post(`https://backend-sandy-six.vercel.app/api/registration/`, {
     iid: formData.instituteid,
     iname: formData.institutename,
     iaddress: formData.instituteaddress,

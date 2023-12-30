@@ -15,7 +15,7 @@ function AttendanceDetail() {
   const [absentCount, setAbsentCount] = useState(0);
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/attendancedetails/${SId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/attendancedetails/${SId}`)
       .then((result) => {
         
         setOriginalData(result.data);

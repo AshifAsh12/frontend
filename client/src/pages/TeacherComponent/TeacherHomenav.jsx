@@ -21,7 +21,7 @@ function TeacherHomenav()  {
   
   
     useEffect(() => {
-      Axios.get(`https://backend-kappa-gray.vercel.app/api/teacheruserdata/${TId}`)
+      Axios.get(`https://backend-sandy-six.vercel.app/api/teacheruserdata/${TId}`)
         .then(result => {
 
 
@@ -39,7 +39,7 @@ function TeacherHomenav()  {
 
     const handleLogout = () => {
 
-      Axios.get(`https://backend-kappa-gray.vercel.app/api/logout`)
+      Axios.get(`https://backend-sandy-six.vercel.app/api/logout`)
         .then((result) => {
           if(result.data.status){
             localStorage.removeItem("valid")

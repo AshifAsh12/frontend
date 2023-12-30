@@ -10,7 +10,7 @@ function AdminHomePage() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/userdata/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/userdata/${IId}`)
       .then(result => {
         setData(result.data[0]);
       })

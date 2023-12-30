@@ -33,7 +33,7 @@ function ClassDetails() {
   };
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/classdetails/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/classdetails/${IId}`)
       .then((result) => {
         setData(result.data);
         if (result.data.length === 0) {
@@ -66,10 +66,10 @@ function ClassDetails() {
     openModal(
       <div>
         <p>Are you sure you want to delete {classDetails.Class_Name}?</p>
-        <button className="Model-Button" onClick={handleDeleteYes}>
+        <button className="Model-Buttonyes" onClick={handleDeleteYes}>
           Yes
         </button>
-        <button className="Model-Button" onClick={handleDeleteNo}>
+        <button className="Model-ButtonNo" onClick={handleDeleteNo}>
           No
         </button>
       </div>
@@ -79,7 +79,7 @@ function ClassDetails() {
   const handleDeleteYes = () => {
     closeModal();
     if (selectedClass) {
-      Axios.post(`https://backend-kappa-gray.vercel.app/api/deleteclass/${IId}`, {
+      Axios.post(`https://backend-sandy-six.vercel.app/api/deleteclass/${IId}`, {
         ClassID: selectedClass.Class_ID,
       })
         .then((response) => {

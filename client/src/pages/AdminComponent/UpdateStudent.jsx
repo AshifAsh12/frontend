@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams,useNavigate} from 'react-router-dom';
 import Axios from 'axios';
 import Modal from 'react-modal';
 import "./Admin.css"
@@ -7,6 +7,7 @@ import "./Admin.css"
 function UpdateStudent() { 
   const { IId } = useParams();
   const { SId } = useParams();
+  const navigate = useNavigate();
   
 const inputvalues = { Regno: '', name: '',Dob:'', Fname: '',Mname:'',Address:'',classname:''};
 const [formdata, setform] = useState(inputvalues);
@@ -37,7 +38,7 @@ setModalContent('');
 };
 
  useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/updatestudentdetails/${SId}/`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/updatestudentdetails/${SId}/`)
       .then(result => {
         setform(prevFormdata => ({
           ...prevFormdata,
@@ -61,7 +62,7 @@ setModalContent('');
   }, [IId]);
 
 useEffect(() => {
-  Axios.get(`https://backend-kappa-gray.vercel.app/api/classdetails/${IId}`)
+  Axios.get(`https://backend-sandy-six.vercel.app/api/classdetails/${IId}`)
     .then(result => {
       setData(result.data);
       if(result.data.length===0){
@@ -113,7 +114,7 @@ const HandleSubmit = (e) => {
 
 
   if (Object.keys(errordata).length === 0) {
-    Axios.put(`https://backend-kappa-gray.vercel.app/api/updatestudent/${SId}`, {
+    Axios.put(`https://backend-sandy-six.vercel.app/api/updatestudent/${SId}`, {
       Regno: formdata.Regno,
       Name: formdata.name,
       Dob: formdata.Dob,
@@ -125,7 +126,9 @@ const HandleSubmit = (e) => {
     })
       .then((response) => {
         if (response.data.message === 'updated') {
-          openModal('Student Updated Successfully');
+          openModal('Student Added Successfully');
+            
+          navigate(`/adminhomepage/${IId}/studentdetails`);
           
         } else 
         if(response.data.message === 'failed') {
@@ -219,7 +222,7 @@ return (
 </div>
 <p className='error'>{errordata.classname}</p>
 <div className='Addbutton-box'>
-        <button type="submit">Submit</button></div>
+        <button type="submit" className='submit'>Submit</button></div>
       </form>
       </div>
     </div>

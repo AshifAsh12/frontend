@@ -1,11 +1,12 @@
 import React, { useState ,useEffect} from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams,useNavigate} from 'react-router-dom';
 import Axios from 'axios';
 import Modal from 'react-modal';
 import "./Admin.css"
 
 function UpdateTeacher() {
-    
+  const navigate = useNavigate();
+  const { IId } = useParams();
    
     const { TId } = useParams();
   
@@ -36,7 +37,7 @@ const closeModal = () => {
 
 
 useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/updateteacherdetails/${TId}/`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/updateteacherdetails/${TId}/`)
       .then(result => {
         setform(prevFormdata => ({
           ...prevFormdata,
@@ -104,7 +105,7 @@ const HandleSubmit = (e) => {
 
 
   if (Object.keys(newerror).length === 0) {
-    Axios.put(`https://backend-kappa-gray.vercel.app/api/updateteacher/${TId}`, {
+    Axios.put(`https://backend-sandy-six.vercel.app/api/updateteacher/${TId}`, {
       Regno: formdata.Regno,
       Name: formdata.name,
       Dob: formdata.Dob,
@@ -115,7 +116,7 @@ const HandleSubmit = (e) => {
       .then((response) => {
         if (response.data.message === 'updated') {
           openModal('Teacher updated Successfully');
-          
+          navigate(`/adminhomepage/${IId}/teacherdetails`);
         } else if(response.data.message === 'failed') {
           openModal('TeacherId Already Exist');
         }
@@ -190,7 +191,7 @@ return (
     onChange={InputChange}></input><br></br>
      <p className='error'>{errordata.password}</p>
      <div className='Addbutton-box'>
-        <button type="submit">Update</button></div>
+        <button type="submit" className='submit'>Update</button></div>
       </form>
       </div>
     </div>

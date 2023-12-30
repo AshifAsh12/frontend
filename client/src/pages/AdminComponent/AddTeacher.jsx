@@ -85,7 +85,7 @@ const HandleSubmit = (e) => {
 
 
   if (Object.keys(newerror).length === 0) {
-    Axios.post(`https://backend-kappa-gray.vercel.app/api/addteacher/${IId}`, {
+    Axios.post(`https://backend-sandy-six.vercel.app/api/addteacher/${IId}`, {
       Regno: formdata.Regno,
       Name: formdata.name,
       Dob: formdata.Dob,
@@ -172,7 +172,7 @@ return (
     onChange={InputChange}></input><br></br>
      <p className='error'>{errordata.password}</p>
         <div className='Addbutton-box'>
-        <button type="submit">Submit</button>
+        <button type="submit" className='submit'>Add</button>
         </div>
       </form>
       </div>

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams ,Link} from 'react-router-dom';
 import Axios from 'axios';
-import './Attendance.css';
-import '../AdminComponent/Admin.css';
+import './Attendance.css'
+import '../AdminComponent/Admin.css'
 
 const AttendanceRegister = () => {
+  
   const { TId } = useParams();
-  const [data, setData] = useState([]);
-  const [todayattendance, setTodayAttendance] = useState([]);
+  const [data, setdata] = useState([]);
+  const [Data, setData] = useState([]);
+  const [todayattendance, settodayattendance] = useState([]);
   const [attendance, setAttendance] = useState([]);
   const [currentStudent, setCurrentStudent] = useState(0);
   const [attendanceDone, setAttendanceDone] = useState(false);
@@ -17,43 +19,51 @@ const AttendanceRegister = () => {
   const formattedDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/teacheruserdata/${TId}`)
-      .then((result) => {
-        setData(result.data[0]);
+    Axios.get(`https://backend-sandy-six.vercel.app/api/teacheruserdata/${TId}`)
+      .then(result => {
+        
+          setData(result.data[0]);
+
+
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
-        alert('Server');
+        alert("Server");
       });
   }, [TId]);
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/attendance/${TId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/attendance/${TId}`)
       .then((result) => {
-        setAttendance(result.data.map((student) => student.status));
+        setdata(result.data);
+
+        // Initialize attendance based on the data received
+        const initialAttendance = result.data.map((student) => student.status);
+        setAttendance(initialAttendance);
       })
       .catch((error) => {
         console.error(error);
         alert('Error');
       });
-  }, [TId]);
+  }, []);
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/attendancecheck/${TId}`, {
+    Axios.get(`https://backend-sandy-six.vercel.app/api/attendancecheck/${TId}`, {
       params: { date: formattedDate },
     })
-      .then((result) => {
+      .then(result => {
+      
         if (result.data.length > 0) {
           setDateCompleted(true);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
         alert('Error');
       });
   }, [TId, formattedDate]);
 
-  const updateAttendance = async (status) => {
+  const updateAttendance = (status) => {
     const updatedAttendance = [...attendance];
     updatedAttendance[currentStudent] = status;
     setAttendance(updatedAttendance);
@@ -75,21 +85,22 @@ const AttendanceRegister = () => {
           status: updatedAttendance[index],
         }));
 
-        try {
-          const today = new Date();
-          const formattedDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+        const today = new Date();
+        const formattedDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
-          await Axios.post('https://backend-kappa-gray.vercel.app/api/submitAttendance', {
-            attendanceData,
-            date: formattedDate,
-            ClassID: data.Class_ID,
-            IID: data.TInstituteID,
+        Axios.post('https://backend-sandy-six.vercel.app/api/submitAttendance', {
+          attendanceData,
+          date: formattedDate,
+          ClassID: Data.Class_ID,
+          IID: Data.TInstituteID,
+        })
+          .then((response) => {
+            window.location.reload();
+
+          })
+          .catch((error) => {
+            console.error('Error submitting attendance:', error);
           });
-
-          window.location.reload();
-        } catch (error) {
-          console.error('Error submitting attendance:', error);
-        }
       }
     }
   };
@@ -106,53 +117,60 @@ const AttendanceRegister = () => {
     }
   };
 
+
+
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/todaysattendance/${TId}`, {
-      params: { date: formattedDate },
-    })
+    Axios.get(`https://backend-sandy-six.vercel.app/api/todaysattendance/${TId}`,
+      { params: { date: formattedDate } })
       .then((result) => {
-        setTodayAttendance(result.data);
+        
+        settodayattendance(result.data)
       })
       .catch((error) => {
         console.error(error);
         alert('Error');
       });
-  }, [TId, formattedDate]);
+  }, []);
 
   return (
+
     <div>
-      <div className="Attendance-Container">
-        <div className="Attendance-dash">
-          <h2>Attendance</h2>
+      <div className='Attendance-Container'>
+      <div className='Attendance-dash'>
+        <h2>Attendance</h2>
         </div>
 
         {data.length > 0 ? (
-          <div className="Attendance-box">
+          <div className='Attendance-box'>
+
+
+
             {!attendanceDone && !dateCompleted && (
-              <div className="Attendance-name">
-                <p>Marking Attendance For</p>
-                <p>Regno : {data[currentStudent].Regno}</p>
-                <p>Name : {data[currentStudent].Name}</p>
+              <div className='Attendance-name'>
+                <p>
+                  Marking Attendance For</p>
+
+
+                <p>Regno :  {data[currentStudent].Regno}</p>
+                <p>Name :  {data[currentStudent].Name}</p>
+
               </div>
             )}
             {!attendanceDone && !dateCompleted && (
-              <div className="Attendance-button">
-                <button className="Present-button" onClick={handlePresent}>
-                  Present
-                </button>
-                <button className="Absent-button" onClick={handleAbsent}>
-                  Absent
-                </button>
+              <div className='Attendance-button'>
+                <button className='Present-button' onClick={handlePresent}>Present</button>
+                <button className='Absent-button' onClick={handleAbsent}>Absent</button>
               </div>
             )}
           </div>
-        ) : null}
-
+        ) : (
+          <p className="Null-details">No data available for the specified teacher ID</p>
+        )}
         {dateCompleted && (
           <div>
             <p className="Null-details">Todays Attendance has been marked.</p>
             <br></br>
-            <div className="Attendance-Table">
+            <div className='Attendance-Table'>
               <p>Todays Attendance</p>
               <table>
                 <thead>
@@ -168,26 +186,23 @@ const AttendanceRegister = () => {
                       <td>{studentDetails.Date}</td>
                       <td>{studentDetails.AstudentID}</td>
                       <td>{studentDetails.Name}</td>
-                      <td
-                        className={
-                          studentDetails.Status === 'Absent' ? 'Absent-status' : ''
-                        }
-                      >
+                      <td className={studentDetails.Status === 'Absent' ? 'Absent-status' : ''}>
                         {studentDetails.Status}
                       </td>
-                      <td>
-                        {' '}
-                        <Link
-                          to={`/teacherhomepage/${TId}/attendacedetails/${studentDetails.AstudentID}`}
-                        >
-                          Details
-                        </Link>
-                      </td>
+
+                      <td> <Link
+                  to={`/teacherhomepage/${TId}/attendacedetails/${studentDetails.AstudentID}`}
+                >
+                  Details
+                </Link></td>
+
+
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
+
           </div>
         )}
       </div>

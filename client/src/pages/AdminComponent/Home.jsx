@@ -30,7 +30,7 @@ function Home() {
   const formattedDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/totalattendancegraph/${IId}`, {
+    Axios.get(`https://backend-sandy-six.vercel.app/api/totalattendancegraph/${IId}`, {
       params: { date: formattedDate },
     })
       .then(result => {
@@ -48,7 +48,7 @@ function Home() {
 
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/totalstudent/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/totalstudent/${IId}`)
       .then(result => {
 
         const formattedData = result.data.map(item => ({
@@ -67,7 +67,7 @@ function Home() {
   }, [IId]);
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/totalstudent2/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/totalstudent2/${IId}`)
       .then(result => {
 
 
@@ -83,7 +83,7 @@ function Home() {
 
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/userdata/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/userdata/${IId}`)
       .then(result => {
         setData(result.data[0]);
       })
@@ -95,7 +95,7 @@ function Home() {
 
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/totalteacher/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/totalteacher/${IId}`)
       .then(result2 => {
         setTData(result2.data[0]);
        

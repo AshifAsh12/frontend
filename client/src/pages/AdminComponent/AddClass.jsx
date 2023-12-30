@@ -45,7 +45,7 @@ const closeModal = () => {
 
 
 useEffect(() => {
-  Axios.get(`http://localhost:3003/api/teacherdetail/${IId}`)
+  Axios.get(`https://backend-sandy-six.vercel.app/api/teacherdetail/${IId}`)
     .then(result => {
       setData(result.data);
       if(!result.data.length){
@@ -87,7 +87,7 @@ const HandleSubmit = (e) => {
   setError(newError);
 
   if (Object.keys(newError).length === 0) {
-    Axios.post(`http://localhost:3003/api/addclass/${IId}`, {
+    Axios.post(`https://backend-sandy-six.vercel.app/api/addclass/${IId}`, {
     ClassID:formData.classid,
     Classname:formData.classname,
     Teachername:formData.teachername,
@@ -162,7 +162,7 @@ return (
 
    
     <div className='Addbutton-box'>
-    <button type="submit">Add Class</button>
+    <button type="submit" className='submit'>Add Class</button>
     </div>
   </form>
   </div>

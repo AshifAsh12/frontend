@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams,useNavigate} from 'react-router-dom';
 import Axios from 'axios';
 import Modal from 'react-modal';
 import "./Admin.css"
@@ -8,6 +8,7 @@ function UpdateClasss()  {
   const {IId}=useParams()
 
   const {CId}=useParams()
+  const navigate = useNavigate();
   const inputValues = { classid:"",classname: '' ,teachername:''};
   const [formData, setForm] = useState(inputValues);
   
@@ -35,7 +36,7 @@ function UpdateClasss()  {
   
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/updateclassdetails/${CId}/`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/updateclassdetails/${CId}/`)
       .then(result => {
         setForm(prevFormdata => ({
           ...prevFormdata,
@@ -57,7 +58,7 @@ function UpdateClasss()  {
   
   
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/teacherdetail/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/teacherdetail/${IId}`)
       .then(result => {
         setData(result.data);
         if(!result.data.length){
@@ -99,7 +100,7 @@ function UpdateClasss()  {
     setError(newError);
   
     if (Object.keys(newError).length === 0) {
-      Axios.put(`https://backend-kappa-gray.vercel.app/api/updateclass/${IId}/${CId}`, {
+      Axios.put(`https://backend-sandy-six.vercel.app/api/updateclass/${IId}/${CId}`, {
       ClassID:formData.classid,
       Classname:formData.classname,
       Teachername:formData.teachername,
@@ -112,6 +113,7 @@ function UpdateClasss()  {
         
         if (response.data.message === 'Data updated successfully') {
           openModal('Class Updated Successfully');
+          navigate(`/adminhomepage/${IId}/classdetails`);
           
         } if (response.data.message === 'Data updated failed'){
           openModal('ClassID Already Exist');
@@ -175,7 +177,7 @@ function UpdateClasss()  {
   
      
       <div className='Addbutton-box'>
-      <button type="submit">Update</button>
+      <button type="submit" className='submit'>Update</button>
       </div>
     </form>
     </div>

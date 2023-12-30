@@ -13,7 +13,7 @@ function TeacherHomepage()  {
     const [data, setData] = useState(null);
   
     useEffect(() => {
-      Axios.get(`https://backend-kappa-gray.vercel.app/api/userdata/${TId}`)
+      Axios.get(`https://backend-sandy-six.vercel.app/api/userdata/${TId}`)
         .then(result => {
           setData(result.data[0]);
         })

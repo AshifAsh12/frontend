@@ -96,6 +96,7 @@
   top: 9%;
   left: 55%;
   display: flex;
+  gap: 10px;
 
 }
 
@@ -388,12 +389,31 @@
   letter-spacing: 2px;
   ;
 }
+.Model-Button{
+  background: #7BC4B2;
 
-.Model-Button {
+}
+.Model-Button ,.Model-ButtonNo,.Model-Buttonyes{
   width: 60px;
   height: 30px;
   font-size: 14px;
   margin-left: 10px;
+  color: #EEF0F2;
+  border:none
+}
+.Model-Button:hover,.Model-Buttonyes:hover,.Model-ButtonNo:hover{
+ transform: scale(0.9);
+}
+.Model-ButtonNo{
+  
+  background:red;
+  
+}
+.Model-Buttonyes{
+  
+  background:#7b7cc4;
+  
+
 }
 
 @media (max-width: 767px) {
@@ -478,6 +498,27 @@
 
 }
 
+.submit{
+  background: #7BC4B2;
+  border:none;
+  width:40px;
+  color: white;
+  height:30px;
+  border-radius: 10px;
+}
+.Search-Input{
+  border: none;
+  outline: none;
+  height:30px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.Search-Button{
+  border:none;
+  background: white;
+  padding: 5px;
+  border-radius: 10px;
+}
 .Container {
   display: flex;
   justify-content: center;

@@ -14,7 +14,7 @@ function TeacherStudents() {
  
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/teacherstudentdetail/${TId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/teacherstudentdetail/${TId}`)
       .then((result) => {
         setData(result.data);
         if (result.data.length === 0) {

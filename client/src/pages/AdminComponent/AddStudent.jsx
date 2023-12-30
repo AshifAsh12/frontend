@@ -30,7 +30,7 @@ function AddStudent() {
   };
 
   useEffect(() => {
-    Axios.get(`https://backend-kappa-gray.vercel.app/api/classdetails/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/classdetails/${IId}`)
       .then(result => {
         setData(result.data);
         if (result.data.length === 0) {
@@ -81,7 +81,7 @@ function AddStudent() {
     seterror(newerror);
 
     if (Object.keys(errordata).length === 0) {
-      Axios.post(`https://backend-kappa-gray.vercel.app/api/addstudent/${IId}`, {
+      Axios.post(`https://backend-sandy-six.vercel.app/api/addstudent/${IId}`, {
         Regno: formdata.Regno,
         Name: formdata.name,
         Dob: formdata.Dob,
@@ -183,7 +183,7 @@ function AddStudent() {
     </div>
     <p className='error'>{errordata.classname}</p>
             <div className='Addbutton-box'>
-              <button type="submit">Submit</button>
+              <button type="submit" className='submit'>Add</button>
             </div>
           </form>
         </div>

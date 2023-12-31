@@ -14,50 +14,41 @@ function AdminHomeNav() {
   const [data, setData] = useState(null);
   const [isMenuVisible, setMenuVisibility] = useState(false);
   const navigate = useNavigate();
-  Axios.defaults.withCredentials=true
+  Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    Axios.get(`https://backend-sandy-six.vercel.app/api/userdata/${IId}`)
+    Axios.get(`http://localhost:3003/api/userdata/${IId}`)
       .then((result) => {
         setData(result.data[0]);
       })
       .catch((error) => {
         console.error(error);
-        
+        alert('Server Not Responding');
       });
   }, [IId]);
 
-  const handleToggleMenu = () => {
-    setMenuVisibility(!isMenuVisible);
-  };
-
-  const handleMenuLinkClick = () => {
-    setMenuVisibility(false);
-  };
-
   const handleLogout = () => {
-
-    Axios.get(`https://backend-sandy-six.vercel.app/api/logout`)
+    Axios.get(`http://localhost:3003/api/logout`)
       .then((result) => {
-        if(result.data.status){
-          localStorage.removeItem("valid")
+        if (result.data.status) {
+          localStorage.removeItem('valid');
           navigate('/');
         }
-        
       })
       .catch((error) => {
         console.error(error);
-        
+        alert('Server Not Responding');
       });
-    
-
-    
   };
 
+  
   return (
     <div>
       <div className={`nav ${isMenuVisible ? 'menu-visible' : ''}`}>
-        {data ? (
+        <div className="mobile-toggle" onClick={() => setMenuVisibility(!isMenuVisible)}>
+          <span>&#8226;&#8226;&#8226;</span>
+        </div>
+        {isMenuVisible && data ? (
           <div className="navheading">
             <p className="institutename">
               {' '}
@@ -66,53 +57,29 @@ function AdminHomeNav() {
               {data.Institute_Address}
             </p>
           </div>
-        ) : (
-          <div className="navheading">
-          <p>Loading data...</p>
+        ) : null}
+
+        {isMenuVisible && (
+          <div className="navbutton">
+            <Link to={`/adminhomepage/${IId}/`} className="navlink">
+              <AiOutlineDashboard /> Dashboard
+            </Link>
+            <Link to={`/adminhomepage/${IId}/studentdetails`} className="navlink">
+              <PiStudent /> &nbsp;Student
+            </Link>
+            <Link to={`/adminhomepage/${IId}/teacherdetails`} className="navlink">
+              <LiaChalkboardTeacherSolid />&nbsp;Teacher
+            </Link>
+            <Link to={`/adminhomepage/${IId}/classdetails`} className="navlink">
+              <SiGoogleclassroom /> &nbsp;Class
+            </Link>
+            <p className="navlink" onClick={handleLogout}>
+              <TbLogout2 /> &nbsp;Logout
+            </p>
           </div>
         )}
-
-        <div className="navbutton">
-          <Link
-            to={`/adminhomepage/${IId}/`}
-            className="navlink"
-            onClick={handleMenuLinkClick}
-          >
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<AiOutlineDashboard /> &nbsp;Dashboard
-          </Link>
-          <Link
-            to={`/adminhomepage/${IId}/studentdetails`}
-            className="navlink"
-            onClick={handleMenuLinkClick}
-          >
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<PiStudent /> &nbsp;Student
-          </Link>
-          <Link
-            to={`/adminhomepage/${IId}/teacherdetails`}
-            className="navlink"
-            onClick={handleMenuLinkClick}
-          >
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<LiaChalkboardTeacherSolid />&nbsp;Teacher
-          </Link>
-          <Link
-            to={`/adminhomepage/${IId}/classdetails`}
-            className="navlink"
-            onClick={handleMenuLinkClick}
-          >
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<SiGoogleclassroom /> &nbsp;Class
-          </Link>
-          <p className="navlink" onClick={handleLogout}>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<TbLogout2 /> &nbsp;Logout
-          </p>
-        </div>
-      </div>
-
-      {/* Three-dot button for mobile toggle */}
-      <div className="mobile-toggle" onClick={handleToggleMenu}>
-        <span>&#8226;&#8226;&#8226;</span>
       </div>
     </div>
   );
 }
-
 export default AdminHomeNav;

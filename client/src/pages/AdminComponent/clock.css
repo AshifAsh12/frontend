@@ -7,13 +7,14 @@
   border-radius: 10px;;
   position:absolute;
   top:0.5%;
-  left: 65%;
+  left: 85%;
   background: #fff;
   box-shadow: 20px 20px 60px #00000041,
   inset -20px 60px #ffffff40;
   
 
 }
+
 
 .clock {
   width: 100px;
@@ -96,3 +97,8 @@
 .eight { left: 18px; top: 67%; }
 .nine { left: 10px; top: 46%; }
 .ten { top: 25%; left: 10%; }
+
+@media (max-width: 767px) {
+  .clock-box{
+    left:69%;
+  } }

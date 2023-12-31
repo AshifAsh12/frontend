@@ -1,9 +1,5 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Axios from 'axios';
-
-
-
 import TeacherHomenav from './TeacherHomenav';
 
 

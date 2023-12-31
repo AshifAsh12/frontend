@@ -15,7 +15,6 @@
 
 }
 
-
 .clock {
   width: 100px;
   height: 100px;
@@ -100,5 +99,7 @@
 
 @media (max-width: 767px) {
   .clock-box{
-    left:69%;
-  } }
+    display: none;
+  }
+
+}

@@ -76,7 +76,7 @@ setModalContent('');
           password:formdata.password,
         })
         .then((response) => {
-          console.log(response);
+          
           if (response.data.message === 'Success') {
             localStorage.setItem("valid",true);
             

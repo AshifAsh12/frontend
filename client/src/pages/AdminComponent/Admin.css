@@ -1,94 +1,85 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
 
-.wrapper2 {
-  height: 100vh;
-  width: 100%;
-  background: #FFFF;
-  background-size: cover;
-  background-position: center;
-  margin: 0;
-  display: flex;
+
+.mobile-toggle {
+  display: block;
+  cursor: pointer;
+  position: fixed;
+  
+  padding: 10px;
+  color:black;
 
 }
 
-
-
+/* Navbar styles */
 .nav {
-  width: 200px;
-  height: 100vh;
-  background: #FFFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40px; /* Adjust the width as needed */
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: width 0.3s ease-out;
+}
 
+.nav.menu-visible {
+  width: 180px;
+  
+}
+
+.navheading {
+  color:black;
+  padding: 10px;
+  position:absolute;
+  top:10%;
+  box-shadow: 0px 3px  #7BC4B2;
+  height:80px;
+  width: 100%;
   display: flex;
   align-items: center;
-
-  flex-direction: column;
-
-
-
-
+  justify-content: center;
 }
 
 .navbutton {
+  
   display: flex;
   flex-direction: column;
+  justify-content: right;
   align-items: center;
-  justify-content: center;
-  margin: 30px;
-
+  
+  width: 100%;
+  padding-top: 20px; 
+  position: relative;
+  top:25%;
+ 
 }
 
 .navlink {
-  height: 40px;
-  width: 150px;
-  color: black;
-  text-align: left;
-  cursor: pointer;
-  font-size: 13px;
+  color:black;
   text-decoration: none;
-  font-family: 'Bahnschrift Condensed';
-  background: white;
+  padding: 10px;
+  margin-bottom: 5px;
+  width:130px;
 
-
-
-
+  
 }
 
-
-.navheading {
-  font-size: 16px;
-  border-bottom: 2px solid #7BC4B2;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 150px;
-  width: 300px;
-  text-transform: capitalize;
-  font-weight: 900;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.menu {
-  flex: 0 0 200px;
-  color: white;
-  position: fixed;
-
-
-}
-
+/* Outlet styles */
 .outlet-box {
-  background: #EEF0F2;
-  position: fixed;
-  height: 100vh;
-  width: 100%;
-  flex: 1;
-  left: 20%;
-
-  overflow-y: scroll;
-
+   margin-left:25px;;
+  
+  background-color: #f0f0f0;
+  height: 100%;
 }
+
+
+
+
 
 
 .search-container {
@@ -417,42 +408,7 @@
 }
 
 @media (max-width: 767px) {
-  .wrapper2 {
-    flex-direction: column;
-    align-items: center;
-  }
-
-
-
-
-
-  .nav {
-    width: 100%;
-    height: 100vh;
-  }
-
-  .navbutton {
-    margin: 10px;
-  }
-
-
-
-
-
-  .menu {
-    width: 150px;
-    z-index: 1;
-    position: fixed;
-    left: 0%;
-
-
-  }
-
-  .outlet-box {
-    width: 100%;
-    left: 0;
-  }
-
+  
   .Add-box {
     width: 90%;
     left: 5%;
@@ -480,7 +436,10 @@
     left: 0;
 
   }
-
+  .student-card{
+    width:400px;
+    
+    }
   .TeacherhomeContainer {
 
     grid-template-columns: 1fr;
@@ -493,6 +452,19 @@
 
     width: 450px;
 
+  }
+  
+
+  
+  
+  .mobile-toggle {
+    display: block;
+    color: black;
+  }
+
+  .menu-visible .navbutton {
+    display: flex;
+    
   }
 
 

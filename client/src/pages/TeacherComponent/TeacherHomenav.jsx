@@ -15,18 +15,18 @@ function TeacherHomenav() {
   const [isMenuVisible, setMenuVisibility] = useState(false);
 
   useEffect(() => {
-    Axios.get(`http://localhost:3003/api/teacheruserdata/${TId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/teacheruserdata/${TId}`)
       .then(result => {
         setData(result.data[0]);
       })
       .catch(error => {
         console.error(error);
-        alert("Server");
+        
       });
   }, [TId]);
 
   const handleLogout = () => {
-    Axios.get(`http://localhost:3003/api/logout`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/logout`)
       .then((result) => {
         if (result.data.status) {
           localStorage.removeItem("valid");
@@ -35,7 +35,7 @@ function TeacherHomenav() {
       })
       .catch((error) => {
         console.error(error);
-        alert('Server Not Responding');
+        
       });
   };
 

@@ -17,7 +17,7 @@ function AdminHomeNav() {
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    Axios.get(`http://localhost:3003/api/userdata/${IId}`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/userdata/${IId}`)
       .then((result) => {
         setData(result.data[0]);
       })
@@ -28,7 +28,7 @@ function AdminHomeNav() {
   }, [IId]);
 
   const handleLogout = () => {
-    Axios.get(`http://localhost:3003/api/logout`)
+    Axios.get(`https://backend-sandy-six.vercel.app/api/logout`)
       .then((result) => {
         if (result.data.status) {
           localStorage.removeItem('valid');

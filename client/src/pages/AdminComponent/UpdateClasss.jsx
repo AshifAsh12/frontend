@@ -52,7 +52,7 @@ function UpdateClasss()  {
       })
       .catch(error => {
         console.error(error);
-        alert('Error');
+        
       });
   }, [CId]);
   
@@ -67,14 +67,14 @@ function UpdateClasss()  {
       })
       .catch(error => {
         console.error(error);
-        alert('Error');
+        
       });
   }, [IId]);
   
   const InputChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...formData, [name]: value });
-    console.log(formData.teachername)
+    
   };
   
   const HandleSubmit = (e) => {
@@ -120,7 +120,7 @@ function UpdateClasss()  {
         }
       })
       .catch((error) => {
-        openModal('Something went wrong');
+        console.log("error")
       });
     }
   };

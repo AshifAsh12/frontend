@@ -122,7 +122,7 @@ const HandleSubmit = (e) => {
         }
       })
       .catch((error) => {
-        openModal('Something went wrong');
+        console.log(error)
       });
   }
 };

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Axios from 'axios';
 
 
@@ -9,19 +9,7 @@ import TeacherHomenav from './TeacherHomenav';
 
 
 function TeacherHomepage()  {
-    const { TId } = useParams();
-    const [data, setData] = useState(null);
-  
-    useEffect(() => {
-      Axios.get(`https://backend-sandy-six.vercel.app/api/userdata/${TId}`)
-        .then(result => {
-          setData(result.data[0]);
-        })
-        .catch(error => {
-          console.error(error);
-          alert("Error");
-        });
-    }, [TId]);
+    
   
     return (
       <div>

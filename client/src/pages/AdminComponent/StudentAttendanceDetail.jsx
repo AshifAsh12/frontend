@@ -26,7 +26,7 @@ function StudentAttendanceDetail() {
       })
       .catch((error) => {
         console.error(error);
-        alert('Error');
+    
       });
   }, [SId]);
 

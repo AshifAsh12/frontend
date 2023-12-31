@@ -23,7 +23,7 @@ function AdminHomeNav() {
       })
       .catch((error) => {
         console.error(error);
-        alert('Server Not Responding');
+        
       });
   }, [IId]);
 
@@ -47,7 +47,7 @@ function AdminHomeNav() {
       })
       .catch((error) => {
         console.error(error);
-        alert('Server Not Responding');
+        
       });
     
 

@@ -26,7 +26,7 @@ function AttendanceDetail() {
       })
       .catch((error) => {
         console.error(error);
-        alert('Error');
+        
       });
   }, [SId]);
 

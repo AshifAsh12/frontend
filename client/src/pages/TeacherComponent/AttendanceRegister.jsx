@@ -28,7 +28,7 @@ const AttendanceRegister = () => {
       })
       .catch(error => {
         console.error(error);
-        alert("Server");
+       
       });
   }, [TId]);
 
@@ -43,7 +43,7 @@ const AttendanceRegister = () => {
       })
       .catch((error) => {
         console.error(error);
-        alert('Error');
+     
       });
   }, []);
 
@@ -128,7 +128,7 @@ const AttendanceRegister = () => {
       })
       .catch((error) => {
         console.error(error);
-        alert('Error');
+        
       });
   }, []);
 

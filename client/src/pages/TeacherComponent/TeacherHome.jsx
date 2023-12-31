@@ -30,7 +30,7 @@ function TeacherHome() {
       })
       .catch(error => {
         console.error(error);
-        alert('Error');
+     
       });
   }, [TId, formattedDate]);
 
@@ -44,7 +44,7 @@ function TeacherHome() {
       })
       .catch(error => {
         console.error(error);
-        alert('Error');
+        
       });
   }, [TId, formattedDate]);
 
@@ -60,7 +60,7 @@ function TeacherHome() {
       })
       .catch(error => {
         console.error(error);
-        alert("Error");
+        
       });
   }, [TId]);
 
@@ -72,7 +72,7 @@ function TeacherHome() {
       })
       .catch(error => {
         console.error(error);
-        alert("Server Not Responding");
+        
       });
   }, [TId]);
 

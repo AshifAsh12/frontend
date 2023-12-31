@@ -54,14 +54,14 @@ useEffect(() => {
     })
     .catch(error => {
       console.error(error);
-      alert('Error');
+      
     });
 }, [IId]);
 
 const InputChange = (e) => {
   const { name, value } = e.target;
   setForm({ ...formData, [name]: value });
-  console.log(formData.teachername)
+  
 };
 
 const HandleSubmit = (e) => {

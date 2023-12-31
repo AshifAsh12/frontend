@@ -32,7 +32,7 @@ function TeacherHomenav()  {
         })
         .catch(error => {
           console.error(error);
-          alert("Server");
+         
         });
     }, [TId]);
   
@@ -49,7 +49,7 @@ function TeacherHomenav()  {
         })
         .catch((error) => {
           console.error(error);
-          alert('Server Not Responding');
+          
         });
       
   

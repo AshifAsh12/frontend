@@ -40,7 +40,7 @@ function Home() {
       })
       .catch(error => {
         console.error(error);
-        alert('Error');
+        
       });
   }, [IId, formattedDate]);
 
@@ -62,7 +62,7 @@ function Home() {
       })
       .catch(error => {
         console.error(error);
-        alert("Error");
+        
       });
   }, [IId]);
 
@@ -77,7 +77,7 @@ function Home() {
       })
       .catch(error => {
         console.error(error);
-        alert("Error");
+      
       });
   }, [IId]);
 
@@ -89,7 +89,7 @@ function Home() {
       })
       .catch(error => {
         console.error(error);
-        alert("Error");
+      
       });
   }, [IId]);
 
@@ -104,7 +104,7 @@ function Home() {
       })
       .catch(error2 => {
         console.error(error2);
-        alert("Error");
+       
       });
   }, [IId]);
 

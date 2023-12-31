@@ -39,7 +39,7 @@ function AddStudent() {
       })
       .catch(error => {
         console.error(error);
-        alert('Error');
+      
       });
   }, [IId]);
 

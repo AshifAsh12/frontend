@@ -25,7 +25,7 @@ function TeacherStudents() {
       })
       .catch((error) => {
         console.error(error);
-        alert('Error');
+        
       });
   }, [TId]);
 

@@ -1,34 +1,36 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
-
+.nav.menu-visible .mobile-toggle{
+  display: none;
+}
 
 .mobile-toggle {
   display: block;
   cursor: pointer;
   position: fixed;
-  
   padding: 10px;
-  color:black;
+  color:white;
 
 }
 
-/* Navbar styles */
+
 .nav {
-  position: fixed;
+  position:fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 40px; /* Adjust the width as needed */
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 35px;
+  width: 100%; 
+  background-color:#7BC4B2;
+  
   justify-content: space-between;
   overflow: hidden;
-  transition: width 0.3s ease-out;
+  
 }
 
 .nav.menu-visible {
   width: 180px;
+  height:100%;
+  background:white;
+ position: fixed;
   
 }
 
@@ -71,11 +73,13 @@
 
 /* Outlet styles */
 .outlet-box {
-   margin-left:25px;;
+
   
   background-color: #f0f0f0;
   height: 100%;
 }
+
+
 
 
 
@@ -87,7 +91,6 @@
   top: 9%;
   left: 55%;
   display: flex;
-  gap: 10px;
 
 }
 
@@ -96,10 +99,9 @@
   margin: 5px;
   background-color: white;
   color: black;
-  width: 440px;
+  width: 360px;
   border-radius: 5px;
-  box-shadow: 20px 20px 60px #00000041,
-    inset -20px 60px #ffffff40;
+  
 
 
 }
@@ -219,7 +221,7 @@
 
 .detailbutton {
   margin: 10px;
-  ;
+  
   color: #7BC4B2;
 
   text-align: center;
@@ -238,17 +240,17 @@
   height: 130px;
   width: 100%;
   color: white;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 20px;
+  margin-top: 10px;
 }
 
 
 .Detail-box {
   display: grid;
-  grid-template-columns: repeat(2, 0fr);
+  grid-template-columns: repeat(3, 0fr);
   margin-left: 30px;
   gap: 20px;
 
@@ -260,21 +262,26 @@
 
 .DashHeadname {
   font-size: 20px;
+  margin-left: 30px;
   padding: 5px;
   letter-spacing: 2px;
 }
 
 .Dashname {
   text-transform: capitalize;
+  margin-left: 30px;
   padding: 5px;
+  
   letter-spacing: 2px;
 }
 
 .homeContainer {
-
+  
   display: grid;
-  grid-template-columns: repeat(2, 0fr);
-  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  width: 100%;
+  
 
 }
 
@@ -380,35 +387,17 @@
   letter-spacing: 2px;
   ;
 }
-.Model-Button{
-  background: #7BC4B2;
 
-}
-.Model-Button ,.Model-ButtonNo,.Model-Buttonyes{
+.Model-Button {
   width: 60px;
   height: 30px;
   font-size: 14px;
   margin-left: 10px;
-  color: #EEF0F2;
-  border:none
-}
-.Model-Button:hover,.Model-Buttonyes:hover,.Model-ButtonNo:hover{
- transform: scale(0.9);
-}
-.Model-ButtonNo{
-  
-  background:red;
-  
-}
-.Model-Buttonyes{
-  
-  background:#7b7cc4;
-  
-
 }
 
-@media (max-width: 767px) {
+@media (max-width: 800px) {
   
+
   .Add-box {
     width: 90%;
     left: 5%;
@@ -459,38 +448,20 @@
   
   .mobile-toggle {
     display: block;
-    color: black;
+    color:white;
   }
 
   .menu-visible .navbutton {
     display: flex;
     
   }
+  .totalstudent{
+    display: none;
+  }
 
 
 }
 
-.submit{
-  background: #7BC4B2;
-  border:none;
-  width:40px;
-  color: white;
-  height:30px;
-  border-radius: 10px;
-}
-.Search-Input{
-  border: none;
-  outline: none;
-  height:30px;
-  border-radius: 10px;
-  padding: 10px;
-}
-.Search-Button{
-  border:none;
-  background: white;
-  padding: 5px;
-  border-radius: 10px;
-}
 .Container {
   display: flex;
   justify-content: center;

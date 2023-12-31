@@ -8,6 +8,7 @@ import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
 import { SiGoogleclassroom } from 'react-icons/si';
 import { TbLogout2 } from 'react-icons/tb';
 import { BsFillClipboard2Fill } from 'react-icons/bs';
+import { TiThMenu } from 'react-icons/ti';
 
 function AdminHomeNav() {
   const { IId } = useParams();
@@ -40,46 +41,48 @@ function AdminHomeNav() {
         alert('Server Not Responding');
       });
   };
-
+  const handleLinkClick = () => {
+    setMenuVisibility(false);
+  };
   
   return (
     <div>
-      <div className={`nav ${isMenuVisible ? 'menu-visible' : ''}`}>
-        <div className="mobile-toggle" onClick={() => setMenuVisibility(!isMenuVisible)}>
-          <span>&#8226;&#8226;&#8226;</span>
-        </div>
-        {isMenuVisible && data ? (
-          <div className="navheading">
-            <p className="institutename">
-              {' '}
-              <BsFillClipboard2Fill />
-              &nbsp;&nbsp;&nbsp; {data.Institute_Name} <br />
-              {data.Institute_Address}
-            </p>
-          </div>
-        ) : null}
-
-        {isMenuVisible && (
-          <div className="navbutton">
-            <Link to={`/adminhomepage/${IId}/`} className="navlink">
-              <AiOutlineDashboard /> Dashboard
-            </Link>
-            <Link to={`/adminhomepage/${IId}/studentdetails`} className="navlink">
-              <PiStudent /> &nbsp;Student
-            </Link>
-            <Link to={`/adminhomepage/${IId}/teacherdetails`} className="navlink">
-              <LiaChalkboardTeacherSolid />&nbsp;Teacher
-            </Link>
-            <Link to={`/adminhomepage/${IId}/classdetails`} className="navlink">
-              <SiGoogleclassroom /> &nbsp;Class
-            </Link>
-            <p className="navlink" onClick={handleLogout}>
-              <TbLogout2 /> &nbsp;Logout
-            </p>
-          </div>
-        )}
+    <div className={`nav ${isMenuVisible ? 'menu-visible' : ''}`}>
+      <div className="mobile-toggle" onClick={() => setMenuVisibility(!isMenuVisible)}>
+        <span><TiThMenu /></span>
       </div>
+      {isMenuVisible && data ? (
+        <div className="navheading">
+          <p className="institutename">
+            {' '}
+            <BsFillClipboard2Fill />
+            &nbsp;&nbsp;&nbsp; {data.Institute_Name} <br />
+            {data.Institute_Address}
+          </p>
+        </div>
+      ) : null}
+
+      {isMenuVisible && (
+        <div className="navbutton">
+          <Link to={`/adminhomepage/${IId}/`} className="navlink" onClick={handleLinkClick}>
+            <AiOutlineDashboard /> Dashboard
+          </Link>
+          <Link to={`/adminhomepage/${IId}/studentdetails`} className="navlink" onClick={handleLinkClick}>
+            <PiStudent /> &nbsp;Student
+          </Link>
+          <Link to={`/adminhomepage/${IId}/teacherdetails`} className="navlink" onClick={handleLinkClick}>
+            <LiaChalkboardTeacherSolid />&nbsp;Teacher
+          </Link>
+          <Link to={`/adminhomepage/${IId}/classdetails`} className="navlink" onClick={handleLinkClick}>
+            <SiGoogleclassroom /> &nbsp;Class
+          </Link>
+          <p className="navlink" onClick={() => { handleLogout(); handleLinkClick(); }}>
+            <TbLogout2 /> &nbsp;Logout
+          </p>
+        </div>
+      )}
     </div>
+  </div>
   );
 }
 export default AdminHomeNav;

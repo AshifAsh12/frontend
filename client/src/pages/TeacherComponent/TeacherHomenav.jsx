@@ -7,6 +7,7 @@ import { PiStudent } from "react-icons/pi";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { SiGoogleclassroom } from "react-icons/si";
 import { TbLogout2 } from "react-icons/tb";
+import { TiThMenu } from 'react-icons/ti';
 
 function TeacherHomenav() {
   const { TId } = useParams();
@@ -38,40 +39,44 @@ function TeacherHomenav() {
         
       });
   };
-
+  const handleLinkClick = () => {
+    setMenuVisibility(false);
+  };
   return (
     <div>
-      <div className={`nav ${isMenuVisible ? 'menu-visible' : ''}`}>
-        <div className="mobile-toggle" onClick={() => setMenuVisibility(!isMenuVisible)}>
-          <span>&#8226;&#8226;&#8226;</span>
-        </div>
-        {isMenuVisible && data ? (
-          <div className="navheading">
-            <p className="institutename">
-              <SiGoogleclassroom />&nbsp;&nbsp;&nbsp;
-              {data.Class_ID} <br />{data.Class_Name}
-            </p>
-          </div>
-        ) : null}
-
-        {isMenuVisible && (
-          <div className="navbutton">
-            <Link to={`/teacherhomepage/${TId}/`} className="navlink">
-              <AiOutlineDashboard /> Dashboard
-            </Link>
-            <Link to={`/teacherhomepage/${TId}/teacherstudentdetails`} className="navlink">
-              <PiStudent /> &nbsp;Student
-            </Link>
-            <Link to={`/teacherhomepage/${TId}/attendance`} className="navlink">
-              <LiaChalkboardTeacherSolid />&nbsp;Attendance
-            </Link>
-            <p className="navlink" onClick={handleLogout}>
-              <TbLogout2 /> &nbsp;Logout
-            </p>
-          </div>
-        )}
+    <div className={`nav ${isMenuVisible ? 'menu-visible' : ''}`}>
+      <div className="mobile-toggle" onClick={() => setMenuVisibility(!isMenuVisible)}>
+        <span><TiThMenu /></span>
       </div>
+      {isMenuVisible && data ? (
+        <div className="navheading">
+          <p className="institutename">
+            {' '}
+            <SiGoogleclassroom />
+            &nbsp;&nbsp;&nbsp; {data.Class_ID} <br />
+            {data.Class_Name}
+          </p>
+        </div>
+      ) : null}
+
+      {isMenuVisible && (
+        <div className="navbutton">
+          <Link to={`/teacherhomepage/${TId}/`} className="navlink" onClick={handleLinkClick}>
+            <AiOutlineDashboard /> Dashboard
+          </Link>
+          <Link to={`/teacherhomepage/${TId}/teacherstudentdetails`} className="navlink" onClick={handleLinkClick}>
+            <PiStudent /> &nbsp;Student
+          </Link>
+          <Link to={`/teacherhomepage/${TId}/attendance`} className="navlink" onClick={handleLinkClick}>
+            <LiaChalkboardTeacherSolid />&nbsp;Attendance
+          </Link>
+          <p className="navlink" onClick={() => { handleLogout(); handleLinkClick(); }}>
+            <TbLogout2 /> &nbsp;Logout
+          </p>
+        </div>
+      )}
     </div>
+  </div>
   );
 }
 

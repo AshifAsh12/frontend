@@ -3,6 +3,7 @@ import { useParams,} from 'react-router-dom';
 import Axios from 'axios';
 
 import '../AdminComponent/Admin.css';
+import { FaSearch } from "react-icons/fa";
 
 
 function TeacherStudents() {
@@ -56,13 +57,13 @@ function TeacherStudents() {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search by name..."
+            placeholder="Register-No"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className='Search-Input'
           />
           <button onClick={handleSearch}
-                  className='Search-Button'>Search</button>
+                  className='Search-Button'><FaSearch /></button>
         </div>
       </div>
       <div className="Details">

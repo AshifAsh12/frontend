@@ -87,10 +87,35 @@
 
 
 .search-container {
-  position: absolute;
-  top: 9%;
-  left: 55%;
+ 
   display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+ 
+  left:70%;
+
+}
+.Search-Button{
+  border:none;
+  height:30px;
+  width:30px;
+  border-radius: 50%;
+  background:white;
+  margin-left: 5px;
+  outline: none;
+
+
+}
+.Search-Button:hover{
+  transform: scale(0.9);
+}
+.Search-Input{
+  border:none;
+  outline: none;
+  padding: 5px;
+  width:150px;
+  height:27px;
 
 }
 
@@ -194,29 +219,26 @@
   margin: 8px;
 }
 
-.edit-button {
+.edit-button ,.delete-button{
   text-decoration: none;
-  background: #7b7cc4;
-  width: 100px;
-  height: 40px;
+  border-radius: 2px;
+  width: 60px;
+  height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 40px;
+  border: none;
   color: white;
   vertical-align: center;
+  font-size: 12px;
 
 }
-
+.edit-button{
+  background: #7b7cc4;
+}
 .delete-button {
-  width: 100px;
-  height: 40px;
-
-  border-radius: 40px;
-  color: white;
-  vertical-align: center;
+  
   background-color: red;
-  border: none;
 }
 
 .detailbutton {
@@ -247,6 +269,12 @@
   margin-top: 10px;
 }
 
+.Details{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 
 .Detail-box {
   display: grid;
@@ -395,7 +423,7 @@
   margin-left: 10px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
   
 
   .Add-box {
@@ -426,8 +454,17 @@
 
   }
   .student-card{
-    width:400px;
+    width:300px;
+    height:100%;
+    font-size: 12px;
     
+    }
+    .head{
+      width:200px;
+      height:30px;
+    }
+    .body{
+      height: 30px;
     }
   .TeacherhomeContainer {
 
@@ -442,8 +479,23 @@
     width: 450px;
 
   }
-  
-
+  .edit-button,.delete-button{
+    height:30px;
+    width:50px;
+    font-size: 10px;
+  }
+  .search-container{
+    left:60%;
+    
+  }
+  .Search-Input{
+    width:100px;
+    height:20px;
+  }
+  .Search-Button{
+    height:22px;
+    width: 22px;
+  }
   
   
   .mobile-toggle {

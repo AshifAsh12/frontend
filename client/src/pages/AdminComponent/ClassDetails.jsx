@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Axios from 'axios';
 import Modal from 'react-modal';
+import { FaSearch } from "react-icons/fa";
 
 function ClassDetails() {
   const { IId } = useParams();
@@ -113,13 +114,13 @@ function ClassDetails() {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search by class name..."
+            placeholder="Class-ID"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className='Search-Input'
           />
           <button onClick={handleSearch} className='Search-Button'>
-            Search
+          <FaSearch />
           </button>
         </div>
       </div>

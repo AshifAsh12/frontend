@@ -251,6 +251,7 @@
   transition: background-color 0.3s;
 text-decoration: none;
 width:90px;
+height: 40px;;
 
 position: relative;
 top:29%;
@@ -271,6 +272,7 @@ left:2%;
   justify-content: center;
   padding: 20px;
   margin-top: 10px;
+  overflow: hidden;
 }
 
 .Details{
@@ -446,12 +448,11 @@ left:2%;
   }
   .detailbutton{
     width:70px;
-    height:22px;
+    height:27px;
     font-size: 10px;
-    padding: 5px;
+    padding: 7.5px;
     left:10%;
     top:25%;
-
 
   }
   .Detail-box {

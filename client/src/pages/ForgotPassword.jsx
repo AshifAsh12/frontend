@@ -77,7 +77,7 @@ function ForgotPassword() {
           <button>Send OTP</button>
 
           <div className='remember-forgot'>
-            <Link to="/adminlogin" className='link'>Back to Login</Link>
+            <Link to="/" className='link'>Back to Login</Link>
           </div>
         </form>
       </div>

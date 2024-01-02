@@ -23,6 +23,7 @@
   
   justify-content: space-between;
   overflow: hidden;
+  z-index: 2;
   
 }
 
@@ -92,8 +93,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
- 
-  left:20%;
+  left:26%;
 
 }
 .Search-Button{
@@ -241,7 +241,7 @@
 
 .detailbutton {
   padding: 10px;
-  font-size: 12px;
+  font-size: 11px;
   color: #7BC4B2;
   background-color:white;
   border: none;
@@ -249,13 +249,14 @@
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s;
-text-decoration: none;
-width:90px;
-height: 40px;;
-
-position: relative;
-top:29%;
-left:2%;
+  text-decoration: none;
+  width:100px;
+  height: 38px;
+  position: relative;
+  left:2%;
+  top: 25%;
+  
+ 
 }
 .detailbutton:hover{
   transform: scale(0.9);
@@ -267,9 +268,6 @@ left:2%;
   height: 130px;
   width: 100%;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   padding: 20px;
   margin-top: 10px;
   overflow: hidden;
@@ -447,12 +445,11 @@ left:2%;
     transform: translateX(-50%);
   }
   .detailbutton{
-    width:70px;
+    width:80px;
     height:27px;
     font-size: 10px;
     padding: 7.5px;
-    left:10%;
-    top:25%;
+    left:9%;
 
   }
   .Detail-box {
@@ -499,13 +496,10 @@ left:2%;
     width:50px;
     font-size: 10px;
   }
-  .search-container{
-    left:30%;
-    
-  }
   .Search-Input{
     width:100px;
     height:22px;
+    
   }
   .Search-Button{
     height:22px;

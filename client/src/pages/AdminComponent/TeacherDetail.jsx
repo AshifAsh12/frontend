@@ -109,7 +109,7 @@ function TeacherDetail() {
       <div className="Dash-heading">
         <p className="DashHeadname">Teacher</p>
         <Link to={`/adminhomepage/${IId}/addteacher`} className="detailbutton">
-          Add Teacher
+         + Add Teacher
         </Link>
         {/* Add search input and button */}
         <div className="search-container">

@@ -108,7 +108,7 @@ function ClassDetails() {
       <div className="Dash-heading">
         <p className="DashHeadname">Class</p>
         <Link to={`/adminhomepage/${IId}/addclass`} className="detailbutton">
-          Add Class
+         + Add Class
         </Link>
         {/* Add search input and button */}
         <div className="search-container">

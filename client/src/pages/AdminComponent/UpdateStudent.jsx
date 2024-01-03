@@ -147,6 +147,7 @@ return (
             <div className='Details'>
 
     <div className='Add-box'>
+    <div className='Input-box'>
       <form onSubmit={HandleSubmit}>
       
         <h3>Update Student</h3>
@@ -167,7 +168,8 @@ return (
           onChange={InputChange}
         /><br></br>
         <p className='error'>{errordata.name}</p>
-
+        <div className='Date'>
+                <label>Date of Birth: </label>
         <input
           type="date"
           name="Dob"
@@ -176,7 +178,7 @@ return (
           onChange={InputChange}
         /><br></br>
         <p className='error'>{errordata.Dob}</p>
-
+        </div>
         <input
           type="text"
           name="Fname"
@@ -205,7 +207,7 @@ return (
         <p className='error'>{errordata.Address}</p>
 
         <div className='Select-box'>
-    <label> Class  :</label>
+   
         <select  name="classname" 
         id="classname"
         className='classname'
@@ -224,6 +226,7 @@ return (
 <div className='Addbutton-box'>
         <button type="submit" className='submit'>Submit</button></div>
       </form>
+      </div>
       </div>
     </div>
 

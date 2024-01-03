@@ -133,6 +133,7 @@ return (
         <div className='Details'>
     
     <div className='Add-box'>
+    <div className='Input-box'>
       <form onSubmit={HandleSubmit}>
       
         <h3>Update Teacher</h3>
@@ -153,7 +154,8 @@ return (
           onChange={InputChange}
         /><br></br>
         <p className='error'>{errordata.name}</p>
-
+        <div className='Date'>
+                <label>Date of Birth: </label>
         <input
           type="date"
           name="Dob"
@@ -162,7 +164,7 @@ return (
           onChange={InputChange}
         /><br></br>
         <p className='error'>{errordata.Dob}</p>
-
+        </div>
        
         <input
             type="email"
@@ -193,6 +195,7 @@ return (
      <div className='Addbutton-box'>
         <button type="submit" className='submit'>Update</button></div>
       </form>
+      </div>
       </div>
     </div>
 

@@ -129,6 +129,7 @@ function UpdateClasss()  {
   <div>
   <div className='Details'>
   <div className='Add-box'>
+  <div className='Input-box'>
   
     <form onSubmit={HandleSubmit}>
    
@@ -153,7 +154,7 @@ function UpdateClasss()  {
       <br />
       <p className="error">{errorData.classname}</p>
   <div className='Select-box'>
-    <label> Teacher  :</label>
+    
       <select  name="teachername" 
               id="teachername"
               className='select-option'
@@ -179,7 +180,9 @@ function UpdateClasss()  {
       <div className='Addbutton-box'>
       <button type="submit" className='submit'>Update</button>
       </div>
+      
     </form>
+    </div>
     </div>
   </div>
   

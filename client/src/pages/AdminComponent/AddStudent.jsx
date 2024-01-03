@@ -109,6 +109,7 @@ function AddStudent() {
     <div>
       <div className='Details'>
         <div className='Add-box'>
+        <div className='Input-box'>
           <form onSubmit={HandleSubmit}>
             <h3>Add Student</h3>
             <input
@@ -128,7 +129,8 @@ function AddStudent() {
               onChange={InputChange}
             /><br></br>
             <p className='error'>{errordata.name}</p>
-  
+            <div className='Date'>
+                <label>Date of Birth: </label>
             <input
               type="date"
               name="Dob"
@@ -137,7 +139,7 @@ function AddStudent() {
               onChange={InputChange}
             /><br></br>
             <p className='error'>{errordata.Dob}</p>
-  
+          </div>
             <input
               type="text"
               name="Fname"
@@ -165,7 +167,7 @@ function AddStudent() {
             /><br></br>
             <p className='error'>{errordata.Address}</p>
             <div className='Select-box'>
-    <label> Class  :</label>
+   
             <select  name="classname" 
             id="classname"
             className='classname'
@@ -186,6 +188,7 @@ function AddStudent() {
               <button type="submit" className='submit'>Add</button>
             </div>
           </form>
+          </div>
         </div>
       </div>
 

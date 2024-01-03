@@ -118,6 +118,7 @@ return (
 <div>
 <div className='Details'>
 <div className='Add-box'>
+<div className='Input-box'>
 
   <form onSubmit={HandleSubmit}>
  
@@ -142,7 +143,7 @@ return (
     <br />
     <p className="error">{errorData.classname}</p>
   <div className='Select-box'>
-  <label> Teacher Name :</label>
+  
     <select  name="teachername" 
             id="teachername"
             className='teacherselect'
@@ -165,6 +166,7 @@ return (
     <button type="submit" className='submit'>Add Class</button>
     </div>
   </form>
+  </div>
   </div>
 </div>
 

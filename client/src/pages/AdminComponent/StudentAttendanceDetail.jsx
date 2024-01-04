@@ -48,74 +48,78 @@ function StudentAttendanceDetail() {
     countStatus(filteredData);
   };
   return (
-    <div><div className="Attendance-Container">
-    <div className='Attendance-dash'>
+    <div>
+
+    <div className="Dash-heading">
+
+      <p className="DashHeadname">Attendance Details</p>
+
       <div className='datecontainer'>
-        <label> From :</label><input
+
+        <label> From :</label>
+        <input
           className='dateinput'
           type="date"
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
         />
-  <label> To :</label>
+
+        <label> To :</label>
         <input
           className='dateinput'
           type="date"
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
         />
+
         <button onClick={handleDateFilter}>Filter</button>
+
       </div>
-      
 
-      <h2>Attendance Details      </h2>
-
-      
     </div>
 
 
-  </div>
- 
- <div className='total-attendance-box'>
- <div className='Attendance-detail-name'> 
-        <h5>RegNo : {name.AstudentID}</h5>
-       <h5> Name  : {name.Name}</h5>
+
+    <div className='total-attendance-box'>
+        <div className='total-attendance'>
+          <h5>RegNo : {name.AstudentID}</h5>
+          <h5> Name  : {name.Name}</h5>
+        </div>
+        <div className='total-attendance' >
+          <h5> Total Present</h5> <p className='Number'>{presentCount}</p>
+        </div>
+
+      <div className='total-attendance'>
+        <h5> Total Absent</h5><p className='Number'> {absentCount}</p>
       </div>
-      <div className='total' >
-    <h5> Total Present</h5> <p className='Number'>{presentCount}</p>
-      </div>
-      
-     <div className='total'>
-     <h5> Total Absent</h5><p className='Number'> {absentCount}</p>
-     </div>
-     
-     </div>
+
+    </div>
 
 
-  <div className="Attendance-Detail-Table">
+    <div className="Attendance-Detail-Table">
 
 
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {filteredData.map((studentDetails, index) => (
-          <tr key={index}>
-            <td>{studentDetails.Date}</td>
-            <td className={studentDetails.Status === 'Absent' ? 'Absent-status' : ''}>
-              {studentDetails.Status}
-            </td>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Status</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
-    
-    
-  </div></div>
+        </thead>
+        <tbody>
+          {filteredData.map((studentDetails, index) => (
+            <tr key={index}>
+              <td>{studentDetails.Date}</td>
+              <td className={studentDetails.Status === 'Absent' ? 'Absent-status' : ''}>
+                {studentDetails.Status}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+
+    </div></div>
   )
 }
 

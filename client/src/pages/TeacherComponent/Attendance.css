@@ -1,189 +1,194 @@
 
-.Attendance-dash{
-    
-    background:#7BC4B2;
-    height:130px;
-    width:100%;
-    color:white;
-   
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
 
-    
-    
-}
 .Attendance-Detail-Table{
-   background: white;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-
-}
-.datecontainer{
-   
-}
-.datecontainer label{
-}
-   
-.datecontainer input{
-   
-}
-.datecontainer button{
-   
-}
-.total-attendance-box{
+    background: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: white;
     
-}
-.total-attendance-box .total{
-    width:170px;
-    height:90px;
-    padding: 5px;
-    background:white;
-    box-shadow: 10px 10px 10px #00000041,
-    inset -20px 60px #ffffff40;
-
-}
-.total-attendance-box .Number{
-    font-size: 15px;
-    margin: 0;
-}
-.Attendance-box{
+ 
+ }
+ .datecontainer {
+     display: flex;
+     align-items:center;
+     justify-content:end;
+     gap: 3px;
+     margin-bottom: 20px;
+     height: 80px;;
+   }
    
-}
-.Attendance-name{
-    text-align: center;
-    padding: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 600;
-    
-}
-.Attendance-name p{
-    padding: 5px;
-}
-.Attendance-button{
-    display: flex;
-    gap:10px;
-}
-.Attendance-detail-name {
-    
-    margin: 10px;
-    text-align: center;
-    background: white;
-    box-shadow: 10px 10px 10px #00000041,
-    inset -20px 60px #ffffff40;
-    width:16 0px;
-    height:90px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;border-radius: 10px;
-
-
-    
-}
-.Attendance-detail-name h5{
-    padding: 5px;
-    margin: 5px;
+   .datecontainer label {
+     font-weight: bold;
+   }
    
-    
-}
-
-.Present-button{
-    
-    width:100px;
-    height:30px;
-    background: blueviolet;
-    color:white;
-    border: none;
-    font-weight: 600;
-}
-.Absent-button{
-    width:100px;
-    height:30px;
-    background: red;
-    color:white;
-    border: none;
-    font-weight: 600;
-}
-.Absent-button:hover ,.Present-button:hover{
-    transform: scale(0.9);
-
-}
-.Attendance-Table{
-    position: absolute;
-    left:8%;
-    top:30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #ffff;
-    width:800px;
-    
-
-}
-.Attendance-Table p{
-    padding:10px;
-    margin:10px;
-    font-size: 20px;
-    font-weight: 600;
-}
-.Attendance-Table table{
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
-    text-transform: capitalize;
+   .dateinput {
+     padding: 8px;
+     font-size: 14px;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     outline: none;
+   }
    
+   .datecontainer button {
+     padding: 10px 15px;
+     font-size: 14px;
+     background-color: #007bff;
+     color: #fff;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+   }
+   
+   .datecontainer button:hover {
+     background-color: #0056b3;
+   }
+   
+ .total-attendance-box{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background: white;
+     gap:3px;
+     
+ }
+ .total-attendance-box .total-attendance{
+     width:170px;
+     height:90px;
+     padding: 5px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     margin-bottom: 10px;
+ 
+ }
+ .total-attendance-box .Number{
+     font-size: 15px;
+     margin: 0;
+ }
+ .Attendance-box{
     
-}
-table thead th{
-    background: #7BC4B2;
-    color: white;
-    width:150px;
-    height:50px;
+ }
+ .Attendance-name{
+     text-align: center;
+     padding: 20px;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     font-weight: 600;
+     
+ }
+ .Attendance-name p{
+     padding: 5px;
+ }
+ .Attendance-button{
+     display: flex;
+     gap:10px;
+ }
+ 
+ 
+ 
+ .Present-button{
+     
+     width:100px;
+     height:30px;
+     background: blueviolet;
+     color:white;
+     border: none;
+     font-weight: 600;
+ }
+ .Absent-button{
+     width:100px;
+     height:30px;
+     background: red;
+     color:white;
+     border: none;
+     font-weight: 600;
+ }
+ .Absent-button:hover ,.Present-button:hover{
+     transform: scale(0.9);
+ 
+ }
+ .Attendance-Table{
+     position: absolute;
+     left:8%;
+     top:30%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     background: #ffff;
+     width:800px;
+     
+ 
+ }
+ .Attendance-Table p{
+     padding:10px;
+     margin:10px;
+     font-size: 20px;
+     font-weight: 600;
+ }
+ .Attendance-Table table{
+     text-align: center;
+     padding: 10px;
+     margin: 10px;
+     text-transform: capitalize;
     
-}
-table tbody td{
-    text-align: center;
-    height: 50px;
-}
-.Absent-status {
-    color: red;
-  }
-
-  @media (max-width: 1024px) {
-    
-    table thead th{
-        width:220px;
-        font-size: 10px;
-        height: 27px;
+     
+ }
+ table thead th{
+     background: #7BC4B2;
+     color: white;
+     width:150px;
+     height:50px;
+     
+ }
+ table tbody td{
+     text-align: center;
+     height: 50px;
+ }
+ .Absent-status {
+     color: red;
+   }
+ 
+   @media (max-width: 1024px) {
+     
+     table thead th{
+         width:220px;
+         font-size: 10px;
+         height: 27px;
+        
+     }
+     table tbody td{
+         font-size: 9px;
+         height: 27px;
+     }
+ 
+     .total-attendance-box .Number{
+         font-size: 10px;
+     }
+     .total-attendance h5{
+         font-size: 10px;
+     }
+     
+ 
+     .datecontainer label {
+     
+         font-size:9px;
+       }
        
-    }
-    table tbody td{
-        font-size: 9px;
-        height: 27px;
-    }
-
-    .total-attendance-box .total{
-    
-        width:110px;
-        height:60px;
-    }
-    .total-attendance-box .Number{
-        font-size: 15px;
-    }
-    .total h5{
-        font-size: 10px;
-    }
-    .Attendance-detail-name {
-        width: 180px;
-        font-size: 13px;
-        height:60px;
-    }
-  }
+       .dateinput {
+         padding: 3px;
+         font-size: 6px;
+         
+       }
+       
+       .datecontainer button {
+         padding: 3px 7px;
+         font-size: 10px;
+         background-color: #007bff;
+         
+         
+       }
+       
+       
+       
+   }

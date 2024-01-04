@@ -70,14 +70,27 @@ function StudentAttendanceDetail() {
 
       <h2>Attendance Details      </h2>
 
-      <div className='Attendance-detail-name'> 
-        RegNo : {name.AstudentID}<br />
-        Name  : {name.Name}
-      </div>
+      
     </div>
 
 
   </div>
+ 
+ <div className='total-attendance-box'>
+ <div className='Attendance-detail-name'> 
+        <h5>RegNo : {name.AstudentID}</h5>
+       <h5> Name  : {name.Name}</h5>
+      </div>
+      <div className='total' >
+    <h5> Total Present</h5> <p className='Number'>{presentCount}</p>
+      </div>
+      
+     <div className='total'>
+     <h5> Total Absent</h5><p className='Number'> {absentCount}</p>
+     </div>
+     
+     </div>
+
 
   <div className="Attendance-Detail-Table">
 
@@ -100,18 +113,11 @@ function StudentAttendanceDetail() {
         ))}
       </tbody>
     </table>
-    <div className='total'>
-      <div className='total' >
-    <h3> Total Present</h3> <p className='Number'>{presentCount}</p>
-      </div>
-      
-     <div className='total'>
-     <h3> Total Absent</h3><p className='Number'> {absentCount}</p>
-     </div>
-     </div>
+    
     
   </div></div>
   )
 }
 
 export default StudentAttendanceDetail
+ 

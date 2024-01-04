@@ -260,6 +260,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
+  background: white;
 }
 select option{
   font-size: 14px;

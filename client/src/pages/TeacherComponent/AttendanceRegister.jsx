@@ -33,18 +33,7 @@ const AttendanceRegister = () => {
   }, [TId]);
 
   useEffect(() => {
-    Axios.get(`https://backend-sandy-six.vercel.app/api/attendance/${TId}`)
-      .then((result) => {
-        setdata(result.data);
-
-        // Initialize attendance based on the data received
-        const initialAttendance = result.data.map((student) => student.status);
-        setAttendance(initialAttendance);
-      })
-      .catch((error) => {
-        console.error(error);
-     
-      });
+   
   }, []);
 
   useEffect(() => {
@@ -55,6 +44,32 @@ const AttendanceRegister = () => {
       
         if (result.data.length > 0) {
           setDateCompleted(true);
+          Axios.get(`https://backend-sandy-six.vercel.app/api/todaysattendance/${TId}`,
+          { params: { date: formattedDate } })
+          .then((result) => {
+            
+            settodayattendance(result.data)
+          })
+          .catch((error) => {
+            console.error(error);
+            
+          });
+        }
+        if(result.data.length<=0){
+
+
+          Axios.get(`https://backend-sandy-six.vercel.app/api/attendance/${TId}`)
+          .then((result) => {
+            setdata(result.data);
+    
+            // Initialize attendance based on the data received
+            const initialAttendance = result.data.map((student) => student.status);
+            setAttendance(initialAttendance);
+          })
+          .catch((error) => {
+            console.error(error);
+         
+          });
         }
       })
       .catch(error => {
@@ -120,16 +135,7 @@ const AttendanceRegister = () => {
 
 
   useEffect(() => {
-    Axios.get(`https://backend-sandy-six.vercel.app/api/todaysattendance/${TId}`,
-      { params: { date: formattedDate } })
-      .then((result) => {
-        
-        settodayattendance(result.data)
-      })
-      .catch((error) => {
-        console.error(error);
-        
-      });
+
   }, []);
 
   return (

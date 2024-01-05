@@ -374,9 +374,9 @@ select option{
 
 
 .Null-details {
-  position: fixed;
-  left: 45%;
+  text-align: center;
   font-weight: 600;
+  margin-top: 10px;
 
 
 }
@@ -532,6 +532,9 @@ select option{
   }
   .totalstudent{
     display: none;
+  }
+  .Null-details{
+    font-size: 10px;
   }
 
 

@@ -66,9 +66,7 @@
      font-size: 15px;
      margin: 0;
  }
- .Attendance-box{
-    
- }
+ 
  .Attendance-name{
      text-align: center;
      padding: 20px;
@@ -81,55 +79,52 @@
  }
  .Attendance-button{
      display: flex;
+     align-items: center;
+     justify-content: center;
      gap:10px;
  }
  
  
  
- .Present-button{
+ .Present-button ,.Absent-button{
      
      width:100px;
      height:30px;
-     background: blueviolet;
      color:white;
      border: none;
      font-weight: 600;
+ }
+ .Present-button{
+     background: blueviolet;
  }
  .Absent-button{
-     width:100px;
-     height:30px;
+     
      background: red;
-     color:white;
-     border: none;
-     font-weight: 600;
  }
+ 
  .Absent-button:hover ,.Present-button:hover{
      transform: scale(0.9);
  
  }
  .Attendance-Table{
-     position: absolute;
-     left:8%;
-     top:30%;
+    
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: center;
      background: #ffff;
-     width:800px;
+     padding: 20px;
      
  
  }
  .Attendance-Table p{
-     padding:10px;
-     margin:10px;
+    
      font-size: 20px;
      font-weight: 600;
  }
  .Attendance-Table table{
      text-align: center;
      padding: 10px;
-     margin: 10px;
      text-transform: capitalize;
     
      
@@ -152,7 +147,7 @@
    @media (max-width: 1024px) {
      
      table thead th{
-         width:220px;
+         width:240px;
          font-size: 10px;
          height: 27px;
         
@@ -189,6 +184,8 @@
          
        }
        
-       
+       .Attendance-Table p{
+         font-size: 14px;
+       }
        
    }

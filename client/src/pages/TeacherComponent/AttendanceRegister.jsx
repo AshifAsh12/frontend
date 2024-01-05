@@ -136,21 +136,20 @@ const AttendanceRegister = () => {
 
     <div>
       <div className='Attendance-Container'>
-      <div className='Attendance-dash'>
-        <h2>Attendance</h2>
-        </div>
+            <div className="Dash-heading">
 
-        {data.length > 0 ? (
+                <p className="DashHeadname">Attendance </p>
+            </div>
+
+      {data.length > 0 ? (
           <div className='Attendance-box'>
 
 
 
             {!attendanceDone && !dateCompleted && (
               <div className='Attendance-name'>
-                <p>
-                  Marking Attendance For</p>
-
-
+               
+                <p> Marking Attendance For</p>
                 <p>Regno :  {data[currentStudent].Regno}</p>
                 <p>Name :  {data[currentStudent].Name}</p>
 
@@ -211,3 +210,4 @@ const AttendanceRegister = () => {
 };
 
 export default AttendanceRegister;
+

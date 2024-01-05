@@ -14,7 +14,7 @@ const AttendanceRegister = () => {
   const [currentStudent, setCurrentStudent] = useState(0);
   const [attendanceDone, setAttendanceDone] = useState(false);
   const [dateCompleted, setDateCompleted] = useState(false);
-
+  const [nulldata, setnulldata] = useState("");
   const today = new Date();
   const formattedDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
@@ -32,9 +32,7 @@ const AttendanceRegister = () => {
       });
   }, [TId]);
 
-  useEffect(() => {
-   
-  }, []);
+ 
 
   useEffect(() => {
     Axios.get(`https://backend-sandy-six.vercel.app/api/attendancecheck/${TId}`, {
@@ -60,11 +58,15 @@ const AttendanceRegister = () => {
 
           Axios.get(`https://backend-sandy-six.vercel.app/api/attendance/${TId}`)
           .then((result) => {
-            setdata(result.data);
+            if (result.data.length > 0) {
+              setdata(result.data);
     
-            // Initialize attendance based on the data received
-            const initialAttendance = result.data.map((student) => student.status);
-            setAttendance(initialAttendance);
+              // Initialize attendance based on the data received
+              const initialAttendance = result.data.map((student) => student.status);
+              setAttendance(initialAttendance);
+            } else {
+              setnulldata("No data Available For Specific TeacherID");
+            }
           })
           .catch((error) => {
             console.error(error);
@@ -134,9 +136,7 @@ const AttendanceRegister = () => {
 
 
 
-  useEffect(() => {
-
-  }, []);
+ 
 
   return (
 
@@ -146,7 +146,7 @@ const AttendanceRegister = () => {
 
                 <p className="DashHeadname">Attendance </p>
             </div>
-
+            
       {data.length > 0 ? (
           <div className='Attendance-box'>
 
@@ -169,7 +169,7 @@ const AttendanceRegister = () => {
             )}
           </div>
         ) : (
-          <p className="Null-details">No data available for the specified teacher ID</p>
+          <p className="Null-details">{nulldata}</p>
         )}
         {dateCompleted && (
           <div>

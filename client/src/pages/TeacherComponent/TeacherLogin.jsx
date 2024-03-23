@@ -1,7 +1,10 @@
-import React ,{ useState}from 'react';
-import { Link,useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
-import Modal from 'react-modal';
+import DotLoader from "react-spinners/RiseLoader";
+import logo from '../AdminComponent/logo.png';
+import { FaLaptopCode } from "react-icons/fa";
+import { BsGearWide } from "react-icons/bs";
 
 function TeacherLogin() {
     const lformvalue={iid:"",password:""};
@@ -9,32 +12,11 @@ function TeacherLogin() {
 
     const errorvalue={iid:"",password:""};
     const [errordata,seterrordata]=useState(errorvalue);
-    
-
-
-
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-const [modalContent, setModalContent] = useState('');
-
-
-
-
-
-
-const openModal = (content) => {
-setModalContent(content);
-setModalIsOpen(true);
-};
-
-const closeModal = () => {
-setModalIsOpen(false);
-setModalContent('');
-};
+    const [loading, setLoading] = useState(false); // State to manage loading state
 
     const navigate=useNavigate();
     Axios.defaults.withCredentials=true;
     
-
 
     const Handleinput =(e) => {
       const {name,value}=e.target;
@@ -42,15 +24,15 @@ setModalContent('');
       setformdata({...formdata,[name]:value});
 
     }
-   
-    
+
     const HandleSubmit =(e) => {
       e.preventDefault();
+      setLoading(true); // Set loading state to true when the login button is clicked
 
       const newerror={}
 
       if(!formdata.iid){
-        newerror.iid="*Institute-ID is required*";
+        newerror.iid="*Teacher-ID is required*";
       }
       if(!formdata.password)
       {
@@ -63,105 +45,86 @@ setModalContent('');
 
       seterrordata(newerror);
 
-      
-      
+      const holiday= localStorage.getItem("holiday")
+      if(holiday==="true"){
+        alert("Today is holiday")
+        setLoading(false);
+      }
 
-      
-      
+      else{
+       
+    
+
       if (Object.keys(newerror).length === 0) {
-
-
         Axios.post('https://backend-sandy-six.vercel.app/api/Teacherlogin',{
           Iid: formdata.iid,
           password:formdata.password,
         })
         .then((response) => {
-          
           if (response.data.message === 'Success') {
             localStorage.setItem("valid",true);
-            
             navigate('/teacherhomepage/' + response.data.TId);
-           
           } else {
-            openModal('Invalid Username or Password');
+            alert('Invalid Username or Password');
           }
         })
-        
-          .catch((error) => {
-            alert('Server-Not-Found');
-          });
+        .catch((error) => {
+          alert('Server-Not-Found');
+        })
+        .finally(() => {
+          setLoading(false); // Set loading state to false when the request is completed
+        });
+      } else {
+        setLoading(false); // Set loading state to false if there are errors
       }
-      
-      
-    
     }
-  
-     
+    }
 
-    
+    return (
+        <div className='wrapper'>
 
-return (
-  <div className='wrapper'>
-
-    <div className='login-box'>
-    <form onSubmit={HandleSubmit}>
-      
-      <h3>
-        Login As Teacher
-      </h3>
-      
-      <div className='input-box'>
-      
-      <input 
-      type="text"
-      name="iid"
-      placeholder='Teacher-ID'
-      value={formdata.iid}
-      onChange={Handleinput}></input>
-      
-       <p className='error'>{errordata.iid}</p>
-       </div>
-
-
-
-       <div className='input-box'>
-      <input 
-      type="password"
-      name="password"
-      value={formdata.password}
-      placeholder='Password'
-      onChange={Handleinput}></input>
-      
-       <p className='error'>{errordata.password}</p>
-
-      </div>
-      
-      <button>Login</button> 
-
-      <div className='register-link' >  </div>
-
-
-      <div className='remember-forgot'> 
-      <Link to="/" className='link'>Admin Login</Link> 
-      </div>
-      
-    </form>
-    </div>
-
-    <div
-className='Model-Container'>
-    <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      contentLabel="Error Modal"
-      className='ModelBox'
-      >
-      <p>{modalContent}</p>
-      <button  className="Model-Button" onClick={closeModal}>Close</button>
-    </Modal>
-    </div>
-  </div>
-)
+            <div className='style-icon'>
+                <FaLaptopCode className='laptop'/>
+                <BsGearWide className='wheel1'/>
+                <BsGearWide className='wheel2' />
+            </div>
+            <img src={logo} className='login-img'></img>
+            <div className='login-box'>
+                <form onSubmit={HandleSubmit}>
+                    <h3>
+                        Login As Teacher
+                    </h3>
+                    <div className='input-box'>
+                        <input
+                            type="text"
+                            name="iid"
+                            placeholder='Teacher-ID'
+                            value={formdata.iid}
+                            onChange={Handleinput}></input>
+                    </div>
+                    <p className='error'>{errordata.iid}</p>
+                    <div className='input-box'>
+                        <input
+                            type="password"
+                            name="password"
+                            value={formdata.password}
+                            placeholder='Password'
+                            onChange={Handleinput}></input>
+                    </div>
+                    <p className='error'>{errordata.password}</p>
+                    {loading ? ( 
+                        <div className='load'><DotLoader color="#ffff"/></div>
+                    ) : (
+                        <button type="submit">Login</button>
+                    )}
+                    <div className='register-link' >  </div>
+                    <div className='remember-forgot'> 
+                        <Link to="/" className='link'>Admin Login</Link> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    )
 }
 
-export default TeacherLogin
+export default TeacherLogin;

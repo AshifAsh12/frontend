@@ -2,96 +2,86 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import Modal from 'react-modal';
+import logo from './AdminComponent/logo.png';
+import { FaLaptopCode } from "react-icons/fa";
+import { BsGearWide } from "react-icons/bs";
+import DotLoader from "react-spinners/RiseLoader";
 
 function ForgotPassword() {
-  const initialFormValues = { phoneNumber: "" };
+  const initialFormValues = { email: '' };
   const [formdata, setFormData] = useState(initialFormValues);
+  const [errorData, setErrorData] = useState({ email: '' });
+  const [loading, setLoading] = useState(false); // State to manage loading state
 
-  const initialErrorValues = { phoneNumber: "" };
-  const [errorData, setErrorData] = useState(initialErrorValues);
-
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
-
-  const openModal = (content) => {
-    setModalContent(content);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setModalContent('');
-  };
-
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formdata, [name]: value });
+  const handleemailChange = (e) => {
+    const value = e.target.value; // Extract value from event
+    setFormData({ ...formdata, email: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading state to true when the form is submitted
 
     const newErrors = {};
 
-    if (!formdata.phoneNumber) {
-      newErrors.phoneNumber = "*Phone Number is required*";
+    if (!formdata.email) {
+      newErrors.email = '*Email is required*';
     }
 
     setErrorData(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      Axios.post('http://localhost:3003/api/forgotpassword', {
-        phoneNumber: formdata.phoneNumber,
+      Axios.post('https://backend-sandy-six.vercel.app/api/forgot-password', {
+        email: formdata.email,
       })
         .then((response) => {
-          if (response.data.message === 'present') {
-            openModal('OTP sent to your phone number.');
-            // Redirect to OTP verification page
-          } else {
-            openModal('Invalid Phone Number');
+          setLoading(false); // Set loading state to false after receiving the response
+          if (response.data.status === "success") {
+            alert("Email has been sent");
+          } else if (response.data.status === "Failed") {
+            alert("User does not exist");
           }
         })
         .catch(() => {
+          setLoading(false); // Set loading state to false in case of an error
           alert('Server Not Found');
         });
+    } else {
+      setLoading(false); // Set loading state to false if there are errors
     }
   };
 
   return (
     <div className='wrapper'>
+      <div className='style-icon'>
+        <FaLaptopCode className='laptop'/>
+        <BsGearWide className='wheel1'/>
+        <BsGearWide className='wheel2' />
+      </div>
+      <img src={logo} className='login-img' alt='Logo'></img>
       <div className='login-box'>
         <form onSubmit={handleSubmit}>
           <h3>Forgot Password</h3>
-
           <div className='input-box'>
             <input
-              type="text"
-              name="phoneNumber"
-              placeholder='Phone Number'
-              value={formdata.phoneNumber}
-              onChange={handleInput}
+              type='email'
+              placeholder='Email'
+              value={formdata.email}
+              onChange={handleemailChange}
             />
-            <p className='error'>{errorData.phoneNumber}</p>
           </div>
-
-          <button>Send OTP</button>
-
+          <p className='error'>{errorData.email}</p>
+          {loading ? (
+            <div className='load'><DotLoader color="#ffff"/></div>
+          ) : (
+            <button>Send</button>
+          )}
           <div className='remember-forgot'>
-            <Link to="/" className='link'>Back to Login</Link>
+            <Link to='/' className='link'>
+              Back to Login
+            </Link>
           </div>
         </form>
-      </div>
-
-      <div className='Model-Container'>
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="Error Modal"
-          className='ModelBox'
-        >
-          <p>{modalContent}</p>
-          <button className="Model-Button" onClick={closeModal}>Close</button>
-        </Modal>
       </div>
     </div>
   );

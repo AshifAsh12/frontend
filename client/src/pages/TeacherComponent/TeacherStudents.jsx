@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams,} from 'react-router-dom';
+import { useParams,Link} from 'react-router-dom';
 import Axios from 'axios';
 
 import '../AdminComponent/Admin.css';
 import { FaSearch } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
 
 
 function TeacherStudents() {
@@ -35,8 +36,8 @@ function TeacherStudents() {
     setFilteredData(data);
   }, [data]);
 
-  const handleSearch = () => {
-    // Filter data based on the search term
+  const handleSearch = (e) => {
+    e.preventDefault()
     const filtered = data.filter((studentDetails) =>
       studentDetails.Regno.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -50,11 +51,11 @@ function TeacherStudents() {
   
   return (
     <div>
-      <div className="Dash-heading">
-        <p className="DashHeadname">Student</p>
+     
        
-        {/* Add search input and button */}
+        
         <div className="search-container">
+          <form>
           <input
             type="text"
             placeholder="Register-No"
@@ -64,12 +65,15 @@ function TeacherStudents() {
           />
           <button onClick={handleSearch}
                   className='Search-Button'><FaSearch /></button>
+
+</form>
         </div>
-      </div>
+     
       <div className="Details">
         <div className="Detail-box">
           {filteredData.map((studentDetails, index) => (
             <div key={index} className="student-card">
+              <FaUserAlt  className="detail-profile" />
               <div className="record">
                 <label className="head">RegNo:</label>
                 <p className="body">{studentDetails.Regno}</p>
@@ -95,6 +99,14 @@ function TeacherStudents() {
               <label className="head">Address:</label>
               <p className="body">{studentDetails.Address}</p>
             </div>
+
+            <Link
+   className='attendance-details'
+    to={`/teacherhomepage/${TId}/marks/${studentDetails.Regno}`}
+  >
+    Mark
+    
+  </Link>
            
             </div>
           ))}

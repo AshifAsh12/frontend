@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, Link} from 'react-router-dom';
 import Axios from 'axios';
 import './registration.css';
+import logo from './AdminComponent/logo.png';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css'; // import CSS
+import { FaLaptopCode } from "react-icons/fa";
+import { BsGearWide } from "react-icons/bs";
+
 
 function InstituteRegistration() {
   
@@ -34,10 +40,16 @@ function InstituteRegistration() {
   });
 
   
-
+const handlephoneinput =(e)=>{
+  setFormData({ ...formData, number: e });
+}
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+   
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
+   
+      
+   
   };
 
   const handleSubmit = async (e) => {
@@ -126,7 +138,7 @@ if (step === 2) {
   
 } else 
 if (step === 3) {
-  Axios.post(`https://backend-sandy-six.vercel.app/api/registration/`, {
+  Axios.post(`https://backend-sandy-six.vercel.app/api/api/registration/`, {
     iid: formData.instituteid,
     iname: formData.institutename,
     iaddress: formData.instituteaddress,
@@ -138,7 +150,7 @@ if (step === 3) {
   })
     .then((response) => {
       
-        navigate('/');  // Use backticks for template literal
+        navigate('/');  
       
     })
     .catch((error) => {
@@ -150,12 +162,21 @@ if (step === 3) {
 
   return (
     <div className="wrapper">
+
+<div className='style-icon'>
+<FaLaptopCode className='laptop'/>
+<BsGearWide className='wheel1'/>
+<BsGearWide className='wheel2' />
+
+</div>
+
+<img src={logo} className='login-img'></img>
       <div className="login-box">
         <form onSubmit={handleSubmit}>
-          
+        <h3>Sign up</h3>
           {step === 1 && (
             <>
-              <h3>Institute Registration</h3>
+              
               <div className="input-box">
                 <input
                   type="text"
@@ -165,8 +186,9 @@ if (step === 3) {
                   onChange={handleInputChange}
                 />
                 <br />
-                <p className="error">{errorData.instituteid}</p>
+               
               </div>
+              <p className="error">{errorData.instituteid}</p>
               <div className="input-box">
                 <input
                   type="text"
@@ -176,8 +198,9 @@ if (step === 3) {
                   onChange={handleInputChange}
                 />
                 <br />
-                <p className="error">{errorData.institutename}</p>
+               
               </div>
+              <p className="error">{errorData.institutename}</p>
               <div className="input-box">
                 <input
                   type="text"
@@ -187,14 +210,15 @@ if (step === 3) {
                   onChange={handleInputChange}
                 />
                 <br />
-                <p className="error">{errorData.instituteaddress}</p>
+               
               </div>
+              <p className="error">{errorData.instituteaddress}</p>
             </>
           )}
 
           {step === 2 && (
             <>
-              <h3>User Registration</h3>
+              
               <div className="input-box">
                 <input
                   type="text"
@@ -204,8 +228,9 @@ if (step === 3) {
                   onChange={handleInputChange}
                 />
                 <br />
-                <p className="error">{errorData.username}</p>
+                
               </div>
+              <p className="error">{errorData.username}</p>
               <div className="input-box">
                 <input
                   type="text"
@@ -215,8 +240,9 @@ if (step === 3) {
                   onChange={handleInputChange}
                 />
                 <br />
-                <p className="error">{errorData.lastname}</p>
+               
               </div>
+              <p className="error">{errorData.lastname}</p>
               <div className="input-box">
                 <input
                   type="email"
@@ -226,25 +252,29 @@ if (step === 3) {
                   onChange={handleInputChange}
                 />
                 <br />
-                <p className="error">{errorData.email}</p>
+               
               </div>
+              <p className="error">{errorData.email}</p>
               <div className="input-box">
-                <input
-                  type="number"
-                  name="number"
-                  placeholder="Phone-Number"
-                  value={formData.number}
-                  onChange={handleInputChange}
+              
+              <PhoneInput
+              className='Phonenumber'
+               name="number"
+               placeholder='Phone Number'
+               value={formData.number}
+               onChange={handlephoneinput} // Passes only the value directly
                 />
+
                 <br />
-                <p className="error">{errorData.number}</p>
+               
               </div>
+              <p className="error">{errorData.number}</p>
             </>
           )}
 
           {step === 3 && (
             <>
-              <h3>Create Password</h3>
+              
               <div className="input-box">
                 <input
                   type="password"
@@ -254,8 +284,9 @@ if (step === 3) {
                   onChange={handleInputChange}
                 />
                 <br />
-                <p className="error">{errorData.password1}</p>
+                
               </div>
+              <p className="error">{errorData.password1}</p>
               <div className="input-box">
                 <input
                   type="password"
@@ -265,12 +296,21 @@ if (step === 3) {
                   onChange={handleInputChange}
                 />
                 <br />
-                <p className="error">{errorData.password2}</p>
+              
               </div>
+              <p className="error">{errorData.password2}</p>
             </>
           )}
 
           <button type="submit">Next</button>
+
+          <div className='remember-forgot'>
+
+
+          <Link to='/' className='link'>
+              Back to Login
+            </Link>
+            </div>
         </form>
       </div>
     </div>

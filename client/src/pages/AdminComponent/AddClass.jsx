@@ -2,7 +2,9 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import Axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom';
-import Modal from 'react-modal';
+import DotLoader from "react-spinners/RiseLoader";
+import { SiGoogleclassroom } from "react-icons/si";
+
 
 function AddClass() {
   const { IId } = useParams()
@@ -12,35 +14,17 @@ function AddClass() {
 
   const errorValues = { classid: "", classname: '', teachername: '' };
   const [errorData, setError] = useState(errorValues);
+  const [loading, setLoading] = useState(false); 
 
 
 
   const [data, setData] = useState([]);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
 
-  const ModalStyles = {
-    content: {
-      width: '200px',  // Set your desired width
-      height: '100px', // Set your desired height
-      margin: 'auto',
-      border: 'none',
-
-    },
-
-  };
+  
 
 
-  const openModal = (content) => {
-    setModalContent(content);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setModalContent('');
-  };
+  
 
 
 
@@ -66,25 +50,37 @@ function AddClass() {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
+
+    setLoading(true)
     const newError = {};
 
     if (!formData.classid) {
       newError.classid = '*Enter the Class-ID*';
+      setLoading(false)
     }
     if (formData.classid.length > 4) {
       newError.classid = '*ClassID Should Less Than 4*';
+      setLoading(false)
+
     }
     if (!formData.classname) {
       newError.classname = '*Enter the Class-Name*';
+      setLoading(false)
+
     }
     if (formData.classname.length > 10) {
       newError.classname = '*Only 10 Character Valid*';
+      setLoading(false)
+
     }
     if (!formData.teachername) {
       newError.teachername = '*Select the Teacher*';
+      setLoading(false)
+
     }
 
     setError(newError);
+   
 
     if (Object.keys(newError).length === 0) {
       Axios.post(`https://backend-sandy-six.vercel.app/api/addclass/${IId}`, {
@@ -98,18 +94,26 @@ function AddClass() {
       })
         .then((response) => {
           if (response.data.message === 'Available') {
-            openModal('Class Already Added');
+            alert("Class Alredy Added")
+            setLoading(false)
+            
           }
           else if (response.data.message === 'failed') {
-            openModal('Teacher is Handling other class');
+            setLoading(false)
+            alert('Teacher is Handling other class')
+          
 
           } else if (response.data.message === 'Class added successfully') {
-            openModal('Class Added Successfully');
+            setLoading(false)
+
+            alert('Class Added Successfully')
+           
             navigate(`/adminhomepage/${IId}/classdetails`);
           }
         })
         .catch((error) => {
-          openModal('Server Not Found');
+          setError(false)
+         alert("server not found")
         });
     }
   };
@@ -118,7 +122,9 @@ function AddClass() {
     <div>
       <div className='Details'>
         <div className='Add-box'>
+
           <div className='Input-box'>
+          <SiGoogleclassroom className="detail-profile"/>
 
             <form onSubmit={HandleSubmit}>
 
@@ -160,29 +166,15 @@ function AddClass() {
               <p className="error">{errorData.teachername}</p>
 
 
-
-              <div className='Addbutton-box'>
-                <button type="submit" className='submit'>Add Class</button>
-              </div>
+              {loading ? <div className='load'><DotLoader color="#ffff"/></div>
+                :<button type="submit" className='Add-Submit'>Add </button>}
+          
             </form>
           </div>
         </div>
       </div>
 
-      <div
-        className='Model-Container'>
-
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="Error Modal"
-          className='ModelBox'
-
-        >
-          <p>{modalContent}</p>
-          <button className="Model-Button" onClick={closeModal}>OK</button>
-        </Modal>
-      </div>
+      
     </div>
   );
 }

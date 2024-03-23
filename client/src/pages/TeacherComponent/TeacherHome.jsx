@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Axios from 'axios';
 
-import CLOC2 from '../AdminComponent/Clock'
-import '../AdminComponent/clock.css'
+
 
 function TeacherHome() {
 
@@ -85,26 +84,11 @@ function TeacherHome() {
   return (
     <div>
 
-      <div className="Dash-heading">
-
-        <p className='DashHeadname'>
-          Dashboard
-        </p>
-        {data ? (
-          <p className='Dashname'>
-            Class &nbsp; {data.Class_Name}  --------</p>
-
-
-        ) : (
-          <p>No data...</p>
-        )}
-        <CLOC2></CLOC2>
-
-      </div>
+      
 
       <div>
 
-        <div className='TeacherhomeContainer'>
+        <div className='teacherhomeContainer'>
 
 
 

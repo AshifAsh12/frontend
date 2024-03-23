@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
-import Modal from 'react-modal';
+import DotLoader from "react-spinners/RiseLoader";
 import "./Admin.css";
+import { FaUserAlt } from "react-icons/fa";
 
 function AddStudent() {
   const { IId } = useParams();
@@ -15,19 +16,11 @@ function AddStudent() {
   const [errordata, seterror] = useState(errorvalues);
 
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false); 
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
 
-  const openModal = (content) => {
-    setModalContent(content);
-    setModalIsOpen(true);
-  };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setModalContent('');
-  };
+ 
 
   useEffect(() => {
     Axios.get(`https://backend-sandy-six.vercel.app/api/classdetails/${IId}`)
@@ -79,8 +72,11 @@ function AddStudent() {
     }
 
     seterror(newerror);
+    
 
     if (Object.keys(errordata).length === 0) {
+
+      setLoading(true)
       Axios.post(`https://backend-sandy-six.vercel.app/api/addstudent/${IId}`, {
         Regno: formdata.Regno,
         Name: formdata.name,
@@ -92,25 +88,33 @@ function AddStudent() {
       })
         .then((response) => {
           if (response.data.message === 'Data inserted successfully2') {
-            openModal('Student Added Successfully');
+           
+            alert("Student Added Successfully ")
+            setLoading(false)
             
             navigate(`/adminhomepage/${IId}/studentdetails`);
           } else {
-            openModal('Student  Already Added');
+            alert("Student Already Added")
+            setLoading(false)
+            
           }
         })
         .catch((error) => {
-          openModal('Student Already Added');
+          alert("Server Not Found")
+          setLoading(false)
         });
     }
   };
 
   return (
     <div>
-      <div className='Details'>
+      <div>
         <div className='Add-box'>
+        
         <div className='Input-box'>
+        <FaUserAlt  className="detail-profile" />
           <form onSubmit={HandleSubmit}>
+          
             <h3>Add Student</h3>
             <input
               type="text"
@@ -134,9 +138,9 @@ function AddStudent() {
             <input
               type="date"
               name="Dob"
-              placeholder='D_O_B'
               value={formdata.Dob}
               onChange={InputChange}
+              className='date'
             /><br></br>
             <p className='error'>{errordata.Dob}</p>
           </div>
@@ -184,23 +188,19 @@ function AddStudent() {
 
     </div>
     <p className='error'>{errordata.classname}</p>
-            <div className='Addbutton-box'>
-              <button type="submit" className='submit'>Add</button>
-            </div>
+
+    {loading ?<div className='load'><DotLoader color="#ffff"/></div>
+    :
+    <button type="submit" className='Add-Submit'>Add</button> }
+            
+             
+            
           </form>
           </div>
         </div>
       </div>
 
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Error Modal"
-        className='ModelBox'
-      >
-        <p>{modalContent}</p>
-        <button className="Model-Button" onClick={closeModal}>OK</button>
-      </Modal>
+      
     </div>
   )
 }

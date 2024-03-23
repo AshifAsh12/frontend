@@ -1,9 +1,13 @@
 
   .error{
-    color:red;
-    font-size: 10px;
+    color:white;
+    font-size: 12px;
     display: flex;
     justify-content: left;
+    align-items: center;
+    padding: -10px;
+    margin-top: -10px;
+    
    
   }
   .lerror{
@@ -12,10 +16,7 @@
   }
   
   
-  
-  .link{
-    font-size: 12px;
-  }
+
 
   .output{
     width:800px;

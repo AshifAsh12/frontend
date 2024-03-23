@@ -1,82 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import '../AdminComponent/Admin.css';
-import { AiOutlineDashboard } from "react-icons/ai";
-import { PiStudent } from "react-icons/pi";
-import { LiaChalkboardTeacherSolid } from "react-icons/lia";
-import { SiGoogleclassroom } from "react-icons/si";
-import { TbLogout2 } from "react-icons/tb";
-import { TiThMenu } from 'react-icons/ti';
+import { FaBars, FaTimes } from "react-icons/fa";
+import Loader from '../Loader/Loader';
 
 function TeacherHomenav() {
   const { TId } = useParams();
-  const [data, setData] = useState(null);
   const navigate = useNavigate();
-  const [isMenuVisible, setMenuVisibility] = useState(false);
+  const navref = useRef();
+  const [isLoading, setIsLoading] = useState(false); // State to manage loading
 
-  useEffect(() => {
-    Axios.get(`https://backend-sandy-six.vercel.app/api/teacheruserdata/${TId}`)
-      .then(result => {
-        setData(result.data[0]);
-      })
-      .catch(error => {
-        console.error(error);
-        
-      });
-  }, [TId]);
+  const ShowNavbar = () => {
+    setIsLoading(true); // Set loading state to true when a navigation action is initiated
+    navref.current.classList.toggle("responsive_bar");
+    // Simulate loading completion after 1 second (you can replace it with actual data fetching)
+    setTimeout(() => {
+      setIsLoading(false); // Set loading state to false when the action is completed
+    }, 1000);
+  };
 
-  const handleLogout = () => {
-    Axios.get(`https://backend-sandy-six.vercel.app/api/logout`)
-      .then((result) => {
-        if (result.data.status) {
-          localStorage.removeItem("valid");
-          navigate('/teacherlogin');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        
-      });
-  };
-  const handleLinkClick = () => {
-    setMenuVisibility(false);
-  };
   return (
     <div>
-    <div className={`nav ${isMenuVisible ? 'menu-visible' : ''}`}>
-      <div className="mobile-toggle" onClick={() => setMenuVisibility(!isMenuVisible)}>
-        <span><TiThMenu /></span>
-      </div>
-      {isMenuVisible && data ? (
-        <div className="navheading">
-          <p className="institutename">
-            {' '}
-            <SiGoogleclassroom />
-            &nbsp;&nbsp;&nbsp; {data.Class_ID} <br />
-            {data.Class_Name}
-          </p>
-        </div>
-      ) : null}
-
-      {isMenuVisible && (
-        <div className="navbutton">
-          <Link to={`/teacherhomepage/${TId}/`} className="navlink" onClick={handleLinkClick}>
-            <AiOutlineDashboard /> Dashboard
-          </Link>
-          <Link to={`/teacherhomepage/${TId}/teacherstudentdetails`} className="navlink" onClick={handleLinkClick}>
-            <PiStudent /> &nbsp;Student
-          </Link>
-          <Link to={`/teacherhomepage/${TId}/attendance`} className="navlink" onClick={handleLinkClick}>
-            <LiaChalkboardTeacherSolid />&nbsp;Attendance
-          </Link>
-          <p className="navlink" onClick={() => { handleLogout(); handleLinkClick(); }}>
-            <TbLogout2 /> &nbsp;Logout
-          </p>
-        </div>
-      )}
+      <header>
+        <nav ref={navref}>
+          <Link to={`/teacherhomepage/${TId}/`} className="a" onClick={ShowNavbar}> Dashboard </Link>
+          <Link to={`/teacherhomepage/${TId}/teacherstudentdetails`} className="a" onClick={ShowNavbar}> Student </Link>
+          <Link to={`/teacherhomepage/${TId}/attendance`} className="a" onClick={ShowNavbar}> Attendance </Link>
+          <button onClick={ShowNavbar} className='nav-btn nav-close-btn'><FaTimes/></button>
+        </nav>
+        <button onClick={ShowNavbar} className='nav-btn'><FaBars/></button>
+      </header>
+      {isLoading && <Loader/> } {/* Loader conditionally rendered */}
     </div>
-  </div>
   );
 }
 

@@ -1,38 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Axios from 'axios';
-import Modal from 'react-modal';
 import './Admin.css';
 import { FaSearch } from "react-icons/fa";
+import { IoMdPersonAdd } from "react-icons/io";
+import { FaTrashCan } from "react-icons/fa6";
+import { BiSolidEditAlt } from "react-icons/bi";
+import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 
 function TeacherDetail() {
   const { IId } = useParams();
   const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]); // Add state for filtered data
+  const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [nulldata, setNullData] = useState('');
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
   const [selectedTeacher, setSelectedTeacher] = useState(null);
-
-  const ModalStyles = {
-    content: {
-      width: '300px',
-      height: '150px',
-      margin: 'auto',
-      font: 'bold',
-    },
-  };
-
-  const openModal = (content) => {
-    setModalContent(content);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setModalContent('');
-  };
 
   useEffect(() => {
     Axios.get(`https://backend-sandy-six.vercel.app/api/teacherdetail/${IId}`)
@@ -46,112 +28,94 @@ function TeacherDetail() {
       })
       .catch(error => {
         console.error(error);
-       
       });
   }, [IId]);
 
   useEffect(() => {
-    // Update filteredData whenever data changes
     setFilteredData(data);
   }, [data]);
 
-  const handleSearch = () => {
-    // Filter data based on the search term
+  const handleSearch = (e) => {
+    e.preventDefault();
     const filtered = data.filter((teacherDetails) =>
       teacherDetails.TeacherID.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredData(filtered);
   };
 
-  const openDeleteConfirmation = (teacher) => {
+  const handleDeleteConfirmation = (teacher) => {
     setSelectedTeacher(teacher);
-    openModal(
-      <div>
-        <p>Are you sure you want to delete {teacher.Name}?</p>
-        <button className="Model-Buttonyes" onClick={handleDeleteYes}>
-          Yes
-        </button>
-        <button className="Model-ButtonNo" onClick={handleDeleteNo}>
-          No
-        </button>
-      </div>
-    );
+    const confirmation = window.confirm(`Are you sure you want to delete ${teacher.Name}?`);
+    if (confirmation) {
+      handleDeleteYes();
+    }
   };
 
   const handleDeleteYes = () => {
-    closeModal();
     if (selectedTeacher) {
       Axios.post(`https://backend-sandy-six.vercel.app/api/deleteteacher/${IId}`, {
         TeacherID: selectedTeacher.TeacherID,
       })
         .then((response) => {
           if (response.data.message === 'Not found') {
-            openModal('Teacher Not Found In this Institute');
+            alert('Teacher Not Found In this Institute');
           } else if (response.data.message === 'found') {
-            openModal('Deleted Successfully');
+            alert('Deleted Successfully');
             window.location.reload();
           } else if (response.data.error === 'Data deletion failed') {
-            openModal('Teacher is working in class. Please update teacher in class');
+            alert('Teacher is working in class. Please update teacher in class');
           }
         })
         .catch(() => {
-          openModal('Server error');
+          alert('Server error');
         });
     }
   };
 
-  const handleDeleteNo = () => {
-    closeModal();
-  };
-
   return (
     <div>
-      <div className="Dash-heading">
-        <p className="DashHeadname">Teacher</p>
-        <Link to={`/adminhomepage/${IId}/addteacher`} className="detailbutton">
-         + Add Teacher
+      <div>
+        <Link to={`/adminhomepage/${IId}/addteacher`} className="addbutton">
+          <IoMdPersonAdd /> Add
         </Link>
-        {/* Add search input and button */}
         <div className="search-container">
-          <input
-            type="text"
-            placeholder="Teacher-ID"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className='Search-Input'
-          />
-          <button onClick={handleSearch} className='Search-Button'>
-          <FaSearch />
-          </button>
+          <form onSubmit={handleSearch}>
+            <input
+              type="text"
+              placeholder="Teacher-ID"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className='Search-Input'
+            />
+            <button className='Search-Button'>
+              <FaSearch />
+            </button>
+          </form>
         </div>
       </div>
-
-      <div className="Details">
+      <div>
         <div className='Detail-box'>
           {filteredData.map((teacherDetails, index) => (
             <div key={index} className="student-card">
+              <LiaChalkboardTeacherSolid  className="detail-profile"/>
               <div className="record">
-                <label className="head">TeacherID</label>
+                <label className="head">TeacherID : </label>
                 <p className="body">{teacherDetails.TeacherID}</p>
               </div>
               <div className="record">
-                <label className="head">Name:</label>
+                <label className="head">Name :</label>
                 <p className="body">{teacherDetails.Name}</p>
               </div>
               <div className="record">
-                <label className="head">D-O-B:</label>
+                <label className="head">D-O-B :</label>
                 <p className="body">{teacherDetails.TD_o_b}</p>
               </div>
               <div className="record">
-                <label className="head">Email:</label>
-                <p className="body">{teacherDetails.Email}</p>
-              </div>
-              <div className="record">
-                <label className="head">Address:</label>
+                <label className="head">Address :</label>
                 <p className="body">{teacherDetails.Address}</p>
               </div>
               <div className="record">
-                <label className="head">Password: </label>
+                <label className="head">Password : </label>
                 <p className="body">{teacherDetails.Password}</p>
               </div>
               <div className="action-buttons">
@@ -159,13 +123,13 @@ function TeacherDetail() {
                   className="edit-button"
                   to={`/adminhomepage/${IId}/updateteacher/${teacherDetails.TeacherID}`}
                 >
-                  Edit
+                  <BiSolidEditAlt />
                 </Link>
                 <button
                   className="delete-button"
-                  onClick={() => openDeleteConfirmation(teacherDetails)}
+                  onClick={() => handleDeleteConfirmation(teacherDetails)}
                 >
-                  Delete
+                  <FaTrashCan />
                 </button>
               </div>
             </div>
@@ -173,15 +137,6 @@ function TeacherDetail() {
         </div>
       </div>
       <p className='Null-details'>{nulldata}</p>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Confirmation Modal"
-        style={ModalStyles}
-        className='ModelBox'
-      >
-        {modalContent}
-      </Modal>
     </div>
   );
 }

@@ -1,30 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
-import Modal from 'react-modal';
+import DotLoader from "react-spinners/RiseLoader";
+import logo from './AdminComponent/logo.png';
+import { FaLaptopCode } from "react-icons/fa";
+import { BsGearWide } from "react-icons/bs";
 
 function Login() {
   const initialFormValues = { iid: "", password: "" };
   const [formdata, setFormData] = useState(initialFormValues);
+  const [loading, setLoading] = useState(false); // State to manage loading state
 
   const initialErrorValues = { iid: "", password: "" };
   const [errorData, setErrorData] = useState(initialErrorValues);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
-
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
-
-  const openModal = (content) => {
-    setModalContent(content);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setModalContent('');
-  };
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -33,6 +24,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading state to true when the login button is clicked
 
     const newErrors = {};
 
@@ -54,26 +46,40 @@ function Login() {
         password: formdata.password,
       })
         .then((response) => {
+          console.log(response.data.message)
           if (response.data.message === 'Success') {
-            localStorage.setItem("valid",true);
+            localStorage.setItem("valid", true);
             navigate(`/adminhomepage/${response.data.IId}`);
-
-          } else {
-            openModal('Invalid Username or Password');
+          } if (response.data.message === 'wrong password') {
+            alert("Incorrect Password")
+          }
+          if (response.data.message === 'Fail') {
+            alert("User Not Found")
           }
         })
-        .catch(() => {
-          alert('Server Not Found');
+        .catch(error => {
+          console.error(error);
+          alert("Server Not Found");
+        })
+        .finally(() => {
+          setLoading(false); 
         });
+    } else {
+      setLoading(false); 
     }
   };
 
   return (
     <div className='wrapper'>
+      <div className='style-icon'>
+        <FaLaptopCode className='laptop'/>
+        <BsGearWide className='wheel1'/>
+        <BsGearWide className='wheel2' />
+      </div>
+      <img src={logo} className='login-img'></img>
       <div className='login-box'>
         <form onSubmit={handleSubmit}>
           <h3>Login As Admin</h3>
-
           <div className='input-box'>
             <input
               type="text"
@@ -82,9 +88,8 @@ function Login() {
               value={formdata.iid}
               onChange={handleInput}
             />
-            <p className='error'>{errorData.iid}</p>
           </div>
-
+          <p className='error'>{errorData.iid}</p>
           <div className='input-box'>
             <input
               type="password"
@@ -93,32 +98,21 @@ function Login() {
               placeholder='Password'
               onChange={handleInput}
             />
-            <p className='error'>{errorData.password}</p>
           </div>
-
-          <button>Login</button>
-
+          <p className='error'>{errorData.password}</p>
+          {loading ? ( 
+            <div className='load'><DotLoader color="#ffff"/></div>
+          ) : (
+            <button type="submit">Login</button>
+          )}
           <div className='register-link'>
-            <Link to="/instituteregistration" className='link'>Create Account</Link>
+            <Link to="/instituteregistration" className='link'>Sign Up</Link>
           </div>
-
           <div className='remember-forgot'>
             <Link to="/forgotpassword" className='link'>Forgot Password</Link>
             <Link to="/teacherlogin" className='link'>Teacher Login</Link>
           </div>
         </form>
-      </div>
-
-      <div className='Model-Container'>
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="Error Modal"
-          className='ModelBox'
-        >
-          <p>{modalContent}</p>
-          <button className="Model-Button" onClick={closeModal}>Close</button>
-        </Modal>
       </div>
     </div>
   );

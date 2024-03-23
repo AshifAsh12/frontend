@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 import '../TeacherComponent/Attendance.css';
 import './Admin.css';
 
+
+
 function StudentAttendanceDetail() {
-    const { SId } = useParams();
+  const { SId } = useParams();
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [name, setname] = useState([]);
@@ -13,20 +15,25 @@ function StudentAttendanceDetail() {
   const [endDate, setEndDate] = useState('');
   const [presentCount, setPresentCount] = useState(0);
   const [absentCount, setAbsentCount] = useState(0);
+  const [noDataMessage, setNoDataMessage] = useState('');
 
   useEffect(() => {
     Axios.get(`https://backend-sandy-six.vercel.app/api/attendancedetails/${SId}`)
       .then((result) => {
-        
-        setOriginalData(result.data);
-        setFilteredData(result.data);
-        setname(result.data[0]);
-        // Count initial status
-        countStatus(result.data);
+        const data = result.data;
+
+        if (data.length === 0) {
+          setNoDataMessage('No data available for the current student.');
+        } else {
+          setOriginalData(data);
+          setFilteredData(data);
+          setname(data[0]);
+          // Count initial status
+          countStatus(data);
+        }
       })
       .catch((error) => {
         console.error(error);
-    
       });
   }, [SId]);
 
@@ -39,23 +46,19 @@ function StudentAttendanceDetail() {
   };
 
   const handleDateFilter = () => {
-    const filteredData = originalData.filter(
-      (studentDetails) =>
-        studentDetails.Date >= startDate && studentDetails.Date <= endDate
-    );
+    const filteredData = originalData.filter((studentDetails) => {
+      const [day, month, year] = studentDetails.Date.split('-');
+      const studentDate = new Date(`${month}-${day}-${year}`);
+      return studentDate >= new Date(startDate) && studentDate <= new Date(endDate);
+    });
     setFilteredData(filteredData);
     // Recount statuses after filtering
     countStatus(filteredData);
   };
+
   return (
     <div>
-
-    <div className="Dash-heading">
-
-      <p className="DashHeadname">Attendance Details</p>
-
       <div className='datecontainer'>
-
         <label> From :</label>
         <input
           className='dateinput'
@@ -73,55 +76,61 @@ function StudentAttendanceDetail() {
         />
 
         <button onClick={handleDateFilter}>Filter</button>
-
       </div>
 
-    </div>
+      <div className='Attendance-box'>
+   
 
+          {noDataMessage ? (
+            <p>{noDataMessage}</p>
+          ) : (
+            <div>
+            
+              <div className='total-attendance-box'>
+                
+        
+                <div className='total-attendance'>
+                  <h5>RegNo : {name.AstudentID}</h5>
+                  <h5> Name  : {name.Name}</h5>
+                </div>
+                <div className='total-attendance'>
+                  <h5> Total Present</h5> <p className='Number'>{presentCount}</p>
+                </div>
+                <div className='total-attendance'>
+                  <h5> Total Absent</h5><p className='Number'> {absentCount}</p>
+                </div>
+              </div>
 
+              
 
-    <div className='total-attendance-box'>
-        <div className='total-attendance'>
-          <h5>RegNo : {name.AstudentID}</h5>
-          <h5> Name  : {name.Name}</h5>
+              <div className='Attendance-Table'>
+
+              
+                <table className='Table'>
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredData.map((studentDetails, index) => (
+                      <tr key={index}>
+                        <td>{studentDetails.Date}</td>
+                        <td className={studentDetails.Status === 'Absent' ? 'Absent-status' : ''}>
+                          {studentDetails.Status}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
-        <div className='total-attendance' >
-          <h5> Total Present</h5> <p className='Number'>{presentCount}</p>
-        </div>
-
-      <div className='total-attendance'>
-        <h5> Total Absent</h5><p className='Number'> {absentCount}</p>
       </div>
-
-    </div>
-
-
-    <div className="Attendance-Detail-Table">
-
-
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredData.map((studentDetails, index) => (
-            <tr key={index}>
-              <td>{studentDetails.Date}</td>
-              <td className={studentDetails.Status === 'Absent' ? 'Absent-status' : ''}>
-                {studentDetails.Status}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-
-    </div></div>
-  )
+ 
+  );
 }
 
-export default StudentAttendanceDetail
- 
+export default StudentAttendanceDetail;

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Axios from 'axios';
+
+
 import {
   BarChart,
   Bar,
@@ -10,11 +12,14 @@ import {
   Tooltip,
   Legend
 } from "recharts";
-import CLOC2 from './Clock'
-import './clock.css'
+import ToggleSwitch from './ToggleSwitch'
+
+
 
 
 function Home() {
+
+
 
 
   const { IId } = useParams();
@@ -115,54 +120,53 @@ function Home() {
       clearInterval(interval);
     };
   }, []);
+
+function holiday(){
+  localStorage.setItem("holiday", true)
+}
+
   return (
-    <div>
+    <div  className='flexbox'>
 
-      <div className="Dash-heading">
+<div className='holiday'>
+      <label> Holiday?</label>&nbsp;
+<ToggleSwitch name="holiday" />
+</div>
 
-        <p className='DashHeadname'>
-          Dashboard
-        </p>
-        {data ? (
-          <p className='Dashname'>
-            Institute {data.Institute_Name} --------</p>
-
-
-        ) : (
-          <p>Loading data...</p>
-        )}
-        <CLOC2></CLOC2>
+<div className='markeallow'>
+<label>Allow Edit Mark ?</label>&nbsp;
+      <ToggleSwitch name="editbutton" />
 
       </div>
 
-      <div>
+
+  
 
         <div className='homeContainer'>
 
 
 
-          <div className='totalstudent'>
+          <div className='graph-box'>
             <h3>Student</h3>
-
             <BarChart
-              width={400}
-              height={180}
-              data={bardata}
-              margin={{
-                top: 5,
-                right: 10,
-                left: 0,
-                bottom: 5
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="SClassID" label={{ value: 'Class', position: 'insideBottom', offset: -1, fontWeight: 'bold' }} />
-              <YAxis label={{ value: 'Total Student', angle: -90, fontWeight: 'bold' }} />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Total" fill='#82ca9d' barSize={20} />
-
-            </BarChart>
+        width={400}
+        height={180}
+        data={bardata}
+        margin={{
+          top: 5,
+          right: 10,
+          left: 0,
+          bottom: 5
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="SClassID" label={{ value: 'Class', position: 'insideBottom', offset: -1, fontWeight: 'bold' }} />
+        <YAxis label={{ value: 'Total Student', angle: -90, fontWeight: 'bold' }} />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="Total" fill="#d82a4e" barSize={20} />
+        {/* Add more bars if needed with different colors */}
+      </BarChart>
 
           </div>
 
@@ -181,33 +185,33 @@ function Home() {
               <p>Loading data...</p>
             )}
 
-            <Link to={`/adminhomepage/${IId}/studentdetails`} >Student Detail</Link>
+            <Link to={`/adminhomepage/${IId}/studentdetails`} className='link'>Student Detail</Link>
 
 
           </div>
 
-          <div className='totalstudent'>
+          <div className='graph-box'>
             <h3>Attendence</h3>
 
             <BarChart
-      width={400}
-      height={180}
-      data={Tpdata}
-      margin={{
-        top: 5,
-        right: 10,
-        left: 0,
-        bottom: 5
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="AClassID" label={{ value: 'Class', position: 'insideBottom', offset: -1, fontWeight: 'bold' }} />
-      <YAxis label={{ value: 'Count', angle: -90, position: 'insideLeft', fontWeight: 'bold' }} />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="present" fill="#82ca9d" name="Present" barSize={20} />
-      <Bar dataKey="absent" fill="red" name="Absent" barSize={20} />
-    </BarChart>
+  width={400}
+  height={180}
+  data={Tpdata}
+  margin={{
+    top: 10,
+    right: 30, 
+    bottom: 20
+  }}
+>
+  <CartesianGrid strokeDasharray="3 3" />
+  <XAxis dataKey="AClassID" label={{ value: 'Class', position: 'insideBottom', offset: -1, fontWeight: 'bold' }} />
+  <YAxis label={{ value: 'Count', angle: -90, position: 'insideLeft', fontWeight: 'bold' }} />
+  <Tooltip />
+  <Legend />
+  <Bar dataKey="present" fill="#ffff" name="Present" barSize={20} />
+  <Bar dataKey="absent" fill="#d82a4e" name="Absent" barSize={20} />
+</BarChart>
+
           </div>
           <div className='total'>
 
@@ -224,7 +228,7 @@ function Home() {
               <p>Loading data...</p>
             )}
 
-            <Link to={`/adminhomepage/${IId}/teacherdetails`} >Teacher Detail</Link>
+            <Link to={`/adminhomepage/${IId}/teacherdetails`} className='link' >Teacher Detail</Link>
 
 
           </div>
@@ -232,7 +236,7 @@ function Home() {
         </div>
 
         
-      </div>
+   
 
 
 

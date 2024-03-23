@@ -69,8 +69,8 @@ body {
   
   .login-box {
     
-    width: 530px;
-    height: 630px;
+    width: 350px;
+    height:440px;
     
     background: rgba(0, 0, 0, 0.24);
      display: flex;
@@ -88,16 +88,16 @@ body {
   
   }
   .laptop{
-    font-size: 6em;
+    font-size: 3.5em;
   }
   .wheel1{
-    font-size: 3em;
+    font-size: 1.7em;
     position: absolute;
     animation: rotateWheel 5s linear infinite; 
     color: #d82a4e;
   }
   .wheel2{
-    font-size: 2em;
+    font-size: 1em;
     animation: rotateWheel2 5s linear infinite; 
     position: absolute;
     top:45%;
@@ -138,19 +138,20 @@ body {
   .login-img{
     position:absolute;
     left:15%;
-    width:350px;
-    top:-1%;
+    width:190px;
+    top:0%;
   }
   .login-box h3 {
-    font-size: 25px;
+    font-size: 15px;
     color:white;
     text-align:center;
     font-weight: 600;
+    margin: 0px 10px 30px 0px;
   }
   .input-box {
     position:relative;
-    width:380px;
-    margin:30px 0;
+  
+    margin:5px 0;
     border-bottom:1px solid #fff;
     
   }
@@ -159,9 +160,9 @@ body {
     width:100%;
     height:40px;
     outline:none;
-    font-size:1.3em;
+    font-size:0.8em;
     font-weight: 600;
-    padding:0 35px 0 5px;
+    padding:0 10px 0 5px;
     border-radius: 5px;
     background: transparent;
     color: white;
@@ -170,7 +171,7 @@ body {
   
   .remember-forgot {
     margin:10px 0 20px;
-    font-size:1em;
+    font-size:0.5em;
      display:flex;
     justify-content:space-between;
   }
@@ -184,17 +185,17 @@ body {
   }
   .login-box button {
     width:100%;
-    height:40px;
+    height:20px;
     background-color:#d82a4e;
     border:none;
     border-radius:40px;
     cursor:pointer;
-    font-size:1em;
+    font-size:0.5em;
     color:#ffff;
     font-weight:500;
   }
   .register-link {
-    font-size:1.1em;
+    font-size:0.7em;
    
     text-align:center;
     margin:25px 0 10px;
@@ -229,10 +230,11 @@ body {
   .footer-title h3{
     font-weight: 600;
     text-align: center;
+    font-size: 12px;
   
   }
   .widget{
-    height:250px;
+    height:150px;
   
    
 
@@ -241,7 +243,7 @@ body {
   .widget .text-ul{
     list-style: none;
     text-align: center;
-    font-size: 17px;
+    font-size: 12px;
   
     overflow: hidden;
     
@@ -256,12 +258,12 @@ body {
   }
   .Copywrite p {
     color: white;
-    font-size: 22px;
+    font-size: 12px;
     text-align: justify;
   }
   .widget .Icon-ul{
     
-    font-size: 24px;
+    font-size: 12px;
     list-style: none;
     
   }

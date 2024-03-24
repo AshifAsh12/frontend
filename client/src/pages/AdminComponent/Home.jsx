@@ -149,8 +149,8 @@ function holiday(){
           <div className='graph-box'>
             <h3>Student</h3>
             <BarChart
-        width={400}
-        height={180}
+        width={300}
+        height={140}
         data={bardata}
         margin={{
           top: 5,
@@ -164,7 +164,7 @@ function holiday(){
         <YAxis label={{ value: 'Total Student', angle: -90, fontWeight: 'bold' }} />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Total" fill="#d82a4e" barSize={20} />
+        <Bar dataKey="Total" fill="#d82a4e" barSize={16} />
         {/* Add more bars if needed with different colors */}
       </BarChart>
 
@@ -194,8 +194,8 @@ function holiday(){
             <h3>Attendence</h3>
 
             <BarChart
-  width={400}
-  height={180}
+  width={300}
+  height={140}
   data={Tpdata}
   margin={{
     top: 10,

@@ -250,7 +250,7 @@ body {
   }
   .Copywrite{
     
-    height:80px;
+    height:70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -258,7 +258,7 @@ body {
   }
   .Copywrite p {
     color: white;
-    font-size: 12px;
+    font-size: 10px;
     text-align: justify;
   }
   .widget .Icon-ul{
@@ -355,7 +355,7 @@ body {
   
     }
     .Copywrite p{
-      font-size: 12px;;
+      font-size: 8px;;
     }
     .widget .Icon-ul{
       font-size: 12px;

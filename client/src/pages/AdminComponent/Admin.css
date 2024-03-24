@@ -4,7 +4,7 @@
   justify-content: space-between;
   color: #fff;
   padding: 30px;
-  height: 160px;
+  height: 100px;
  margin-top: 20px;
   
 }
@@ -26,7 +26,7 @@
   color: white;
   padding: 10px;
   margin: 5px;
-  font-size: 33px;
+  font-size: 17px;
 
 
 }
@@ -42,8 +42,8 @@
 .menu-trigger img{
   
   
-  height:40px;
-  width:40px;
+  height:30px;
+  width:30px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
@@ -99,19 +99,20 @@ ul{
 .Account-Name{
   position:relative;
   width:250px;
-  left:77.7%;
+  left:73.7%;
   text-align: center;
-  margin-top: -50px;
+  margin-top: -40px;
 
 }
 .Account-Name h3{
   color:white;
-  font-size: 20px;
+  font-size: 12px;
   padding: 16px;
+  font-weight: 600;
 }
 
 .Account-Name h3 span{
-  font-size: 20px;
+  font-size: 12px;
   color: white;
   font-style: 600;
 }
@@ -184,7 +185,7 @@ nav .a{
   color:white;
   text-decoration: none;
   font-weight: 600;
-  font-size: 27px;
+  font-size: 20px;
 
 }
 .button-container{
@@ -194,11 +195,11 @@ nav .a{
   justify-content: center;
   gap:70px;
 
-  position: absolute;
-  left:80%;
+  
+  
 
  
-  width:300px;
+  width:100px;
 }
 
 .user-icon{
@@ -232,12 +233,12 @@ nav .a{
 
 .site-btn {
 	
-	width: 60px;
+	width: 40px;
 	text-align: center;
 	border: none;
 	padding: 5px;
 	font-weight: 800;
-	font-size: 24px;
+	font-size: 17px;
 	
 	color: #fff;
 
@@ -278,13 +279,13 @@ nav .a{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width:700px;
-  height: 350px;
+  width:500px;
+  height: 250px;
   
   transition: 1s;
 }
 .graph-box h3,.total h3{
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
 }
 
@@ -306,14 +307,14 @@ nav .a{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width:350px;
-  height: 350px;
+  width:250px;
+  height: 250px;
   
  
   transition: 1s;
 }
 .Number{
-  font-size: 29px;
+  font-size: 20px;
   font-weight: 600;
 }
 .Detail-box{
@@ -333,14 +334,14 @@ nav .a{
  
   color: #fff;
   min-width: 800px;
-  min-height: 800px;
+  min-height: 500px;
   padding: 20px;
 
 }
 .student-card{
  background: rgba(0, 0, 0, 0.24);
  color: #fff;
- width:420px;
+ width:360px;
  display: flex;
  flex-direction: column;
  align-items: center;
@@ -351,24 +352,12 @@ nav .a{
 }
 .record{
   display: flex;
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: 600;
  
   
 }
-.Model-Buttonyes ,.Model-ButtonNo{
-  border: none;
- 
-  color:white;
-  width:60px;
-}
-.Model-ButtonNo{
-  margin-left: 6px;
-  background: #d82a4e;
-}
-.Model-Buttonyes{
-  margin-right:6px;
-  background: blueviolet;
-}
+
 
 .holiday{
   color: #fff;
@@ -385,23 +374,24 @@ nav .a{
 
 
 .detail-profile{
-  width:70px;
-  height:70px;
+  width:50px;
+  height:50px;
  
   margin-bottom: 40px;
 }
 .head{
-  width:150px;
-  height:30px;
+  width:120px;
+  height:20px;
   padding: 0px;
   text-align: center;
 
 }
 .body{
-  width:150px;
-  height:30px;
+  width:120px;
+  height:20px;
   padding: 2px;
   text-align: center;
+  text-transform: capitalize;
  
 }
 .action-buttons{
@@ -421,12 +411,12 @@ nav .a{
   
 }
 .edit-button ,.delete-button{
-  width:60px;
+  width:50px;
   text-align: center;
   vertical-align: middle;
-  height:40px;
-  font-size: 20px;
-margin: 10px;
+  height:30px;
+  font-size: 14px;
+margin: 5px;
 border-radius: 2px;
 transition: 1s;
 }
@@ -438,7 +428,10 @@ transition: 1s;
 .attendance-details{
   color: #fff;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 15px;
+}
+.attendance-details:hover{
+  color: #d82a4e;
 }
 
 .student-card:nth-child(odd):hover {
@@ -461,13 +454,13 @@ transition: 1s;
   justify-content: center;
 }
 .search-container input{
-  width:200px;
-  height:35px;
-  padding: 10px;
+  width:150px;
+  height:30px;
+  padding: 5px;
   border: none;
 }
 .search-container button{
-  height: 35px;
+  height: 30px;
   width:30px;
   border: none;
   background: #fff;
@@ -476,10 +469,10 @@ transition: 1s;
   text-decoration: none;
   background: #d82a4e;
   color: #fff;
-  width:70px;
-  height:38px;
+  width:60px;
+  height:30px;
   position: absolute;
-  top:-0.2%;
+  top:0%;
   left:65%;
   padding: 1px;
   gap:5px;
@@ -492,8 +485,8 @@ transition: 1s;
 }
 
 .form-container{
-  padding:20px;
-  margin:20px;
+  padding:10px;
+  margin:10px;
   border: 1px solid white;
   
 
@@ -502,14 +495,17 @@ transition: 1s;
 .form-container input{
   border:none;
   margin: 10px;
-  width:450px;
-  padding:10px;
+  width:250px;
+  padding:5px;
+  font-size: 12px;
+ 
 }
 .form-container button{
-  padding:10px;
+  padding:5px;
   border:none;
   background: #d82a4e;
   color:white;
+  font-size: 12px;
 }
 .Add-box{
  
@@ -544,7 +540,7 @@ transition: 1s;
 
   background: #ffffff;
   color: black;
-  padding: 30px;
+  padding: 20px;
  
   
 
@@ -580,9 +576,9 @@ margin-bottom: 20px;
 }
 .Table-container table th{
   border: 1px solid black;
-  font-size: 20px;
+  font-size: 17px;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
  
   
 }
@@ -603,10 +599,10 @@ margin-bottom: 20px;
 
 }
 .Table-container table td{
-  font-size: 20px;
+  font-size: 16px;
   border-right:1px solid black; 
   border-left: 1px solid black; 
-  padding: 20px;
+  padding: 10px;
   text-transform: capitalize;
  
 
@@ -664,7 +660,7 @@ select option{
 
 .logo-img{
  
-  width:350px;
+  width:250px;
   padding: 10px;
   
 }
@@ -675,6 +671,7 @@ float: right;
 }
 .load{
   text-align: center;
+
 }
 
 
@@ -694,6 +691,9 @@ float: right;
   .button-container{
     left:20%;
     top:2.6%;
+    width:50px;
+    overflow: hidden;
+    
   }
   .holiday{
     display:none;
@@ -722,15 +722,17 @@ float: right;
   min-height: 100%;;
   }
   .Account-Name{
-    left:52%;
+    left:60%;
     margin-top: -80px;
+    width:100px;
+    overflow: hidden;
     
   }
   .Account-Name h3{
-    font-size: 12px;;
+    font-size: 8px;;
   }
   .Account-Name h3 span{
-    font-size: 12px;;
+    font-size: 8px;;
   }
   header .responsive_bar{
     transform: none;
@@ -801,10 +803,14 @@ float: right;
 
   .drop{
   top:80px;
-  left:-5%;
+  left:16%;;
+  width:230px;
+  height:450px;
   
   }
-
+  .drop ul li{
+    padding: 2px;;
+  }
   .homeContainer,
   .teacherhomeContainer {
    display: flex;
@@ -862,7 +868,7 @@ float: right;
   
   }
   .logo-img{
-    width:200px;
+    width:150px;
     margin: -40px;
   }
   .Input-box{

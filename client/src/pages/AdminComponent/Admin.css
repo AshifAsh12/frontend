@@ -1,3 +1,7 @@
+
+.wrapper2{
+  zoom:80%;
+}
 .Main_Head {
   display: flex;
   align-items: center;
@@ -99,7 +103,7 @@ ul{
 .Account-Name{
   position:relative;
   width:250px;
-  left:73.7%;
+  left:74%;
   text-align: center;
   margin-top: -40px;
 
@@ -194,8 +198,8 @@ nav .a{
   align-items: center;
   justify-content: center;
   gap:70px;
-
-  
+  position: relative;
+  left:-10%;
   
 
  
@@ -549,21 +553,24 @@ transition: 1s;
 .Table-container h4{
 letter-spacing: 3px;
 margin-bottom: 20px;
+
 }
 
 .Table-container p{
   margin: 2px;
   margin-left: 25px;
   font-weight: 600;
+  font-size: 14px;
 }
 .Table-container h4 ,.Table-container h5{
   text-align: center;
   font-weight: 600;
+  font-size: 17px;
 
 }
 .Table-container table{
   
-  width:600px;
+  width:400px;
   margin: 10px;
   margin-bottom: 40px;
 
@@ -687,12 +694,16 @@ float: right;
     opacity: 1;
     position:relative;
     left:40%;
+    
   }
   .button-container{
-    left:20%;
-    top:2.6%;
-    width:50px;
-    overflow: hidden;
+    position: absolute;
+
+    left:70%;
+    gap:40px;
+   
+    
+  
     
   }
   .holiday{
@@ -722,9 +733,10 @@ float: right;
   min-height: 100%;;
   }
   .Account-Name{
-    left:60%;
-    margin-top: -80px;
-    width:100px;
+    left:52%;
+    
+    width:200px;
+   
     overflow: hidden;
     
   }
@@ -783,27 +795,12 @@ float: right;
   .redo-undo-button button{
     font-size: 20px;
   }
-  .site-btn{
-    padding:3px;
-    width:40px;
-    font-size: 19px;
-    
-    position: absolute;
-    top:36px;
-    right:60px;
-    
-  }
-  .menu-trigger img{
-    position:absolute;
-    right:30px;
-    top:40px;
-    width:25px;
-    height:25px;
-  }
+  
+ 
 
   .drop{
   top:80px;
-  left:16%;;
+ 
   width:230px;
   height:450px;
   
@@ -894,13 +891,14 @@ float: right;
     height: 30px;
   }
   .Table-container h4,.Table-container h5{
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .Table-container p{
     font-size: 12px;
   }
 
+ 
   
 
 }

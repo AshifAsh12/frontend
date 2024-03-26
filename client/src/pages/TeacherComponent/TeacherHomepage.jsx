@@ -51,7 +51,7 @@ function TeacherHomepage() {
 
 
   return (
-    <div>
+    <div className='wrapper2'>
 
 
 <div className='menu' >

@@ -83,8 +83,11 @@ function UpdateClasss()  {
           alert('Class Updated Successfully');
           navigate(`/adminhomepage/${IId}/classdetails`);
         } 
-        if (response.data.message === 'Data updated failed'){
+        if(response.data.message==="failed"){
           alert('ClassID Already Exist');
+        }
+        if (response.data.message === 'Data updated failed'){
+          alert('Teacher already working in other class');
         }
       })
       .catch((error) => {

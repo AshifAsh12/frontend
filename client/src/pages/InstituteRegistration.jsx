@@ -138,7 +138,7 @@ if (step === 2) {
   
 } else 
 if (step === 3) {
-  Axios.post(`https://backend-sandy-six.vercel.app/api/api/registration/`, {
+  Axios.post(`https://backend-sandy-six.vercel.app/api/registration/`, {
     iid: formData.instituteid,
     iname: formData.institutename,
     iaddress: formData.instituteaddress,

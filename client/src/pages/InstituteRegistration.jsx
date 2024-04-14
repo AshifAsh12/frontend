@@ -116,7 +116,7 @@ function InstituteRegistration() {
 
 if (step === 1) {
   console.log(formData.instituteid)
-  Axios.get(`http://localhost:3003/api/checkInstitute?Iid=${formData.instituteid}`)
+  Axios.get(`https://backend-sandy-six.vercel.app/api/checkInstitute?Iid=${formData.instituteid}`)
   .then(result => {
     console.log(result.data.data)
     if(result.data.data.length>0){

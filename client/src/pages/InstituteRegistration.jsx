@@ -7,6 +7,7 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // import CSS
 import { FaLaptopCode } from "react-icons/fa";
 import { BsGearWide } from "react-icons/bs";
+import { parsePhoneNumber } from 'libphonenumber-js';
 
 
 function InstituteRegistration() {
@@ -40,9 +41,16 @@ function InstituteRegistration() {
   });
 
   
-const handlephoneinput =(e)=>{
-  setFormData({ ...formData, number: e });
-}
+  const handlephoneinput = (value) => {
+    // Update the phone number directly from the passed value
+    setFormData({ ...formData, number: value });
+  
+ 
+   
+    
+  };
+  
+  
   const handleInputChange = (e) => {
    
       const { name, value } = e.target;
@@ -78,6 +86,15 @@ const handlephoneinput =(e)=>{
       }
       if (!formData.number) {
         newError.number = '*Phone-Number is Required*';
+      } else {
+        const phoneNumber = parsePhoneNumber(formData.number);
+        if (phoneNumber && phoneNumber.isValid()) {
+          // If the phone number is valid, clear any previous error message
+          setErrorData({ ...errorData, number: '' });
+        } else {
+          // If the phone number is invalid, set an error message
+          newError.number = 'Invalid phone number';
+        }
       }
     } else if (step === 3) {
       if (!formData.password1 || !formData.password2) {
@@ -99,7 +116,7 @@ const handlephoneinput =(e)=>{
 
 if (step === 1) {
   console.log(formData.instituteid)
-  Axios.get(`https://backend-sandy-six.vercel.app/api/checkInstitute?Iid=${formData.instituteid}`)
+  Axios.get(`http://localhost:3003/api/checkInstitute?Iid=${formData.instituteid}`)
   .then(result => {
     console.log(result.data.data)
     if(result.data.data.length>0){
@@ -258,12 +275,12 @@ if (step === 3) {
               <div className="input-box">
               
               <PhoneInput
-              className='Phonenumber'
-               name="number"
-               placeholder='Phone Number'
-               value={formData.number}
-               onChange={handlephoneinput} // Passes only the value directly
-                />
+  className='Phonenumber'
+  name="number"
+  placeholder='Phone Number'
+  value={formData.number}
+  onChange={handlephoneinput} // Passes only the value directly
+/>
 
                 <br />
                
